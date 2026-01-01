@@ -1,11 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  /* Colors - Dark Theme */
-  --color-bg: #0a0a0a;
-  --color-fg: #fafafa;
-  --color-muted: #a3a3a3;
-  --color-border: #262626;
+  /* Colors - Premium Dark Theme */
+  --color-bg: #0c0c0e;
+  --color-fg: #f0f0f2;
+  --color-muted: #6b6b70;
+  --color-muted-light: #9a9aa0;
+  --color-border: #27272a;
+  --color-surface: #18181b;
+
+  /* Accent Colors - Soft Lavender & Cyan */
+  --color-accent: #a78bfa;
+  --color-accent-secondary: #67e8f9;
 
   /* Typography Scale */
   --font-size-xs: 0.875rem;
@@ -17,6 +23,7 @@
   --font-size-3xl: 2.5rem;
   --font-size-4xl: clamp(2.5rem, 5vw, 4rem);
   --font-size-5xl: clamp(3rem, 8vw, 6rem);
+  --font-size-6xl: clamp(3.5rem, 10vw, 7rem);
 
   /* Spacing Scale */
   --space-xs: 0.5rem;
@@ -25,10 +32,16 @@
   --space-lg: 2.5rem;
   --space-xl: 5rem;
   --space-2xl: 7.5rem;
+  --space-3xl: 10rem;
 
   /* Layout */
-  --content-width: 70rem;
+  --content-width: 72rem;
   --content-padding: 1.5rem;
+
+  /* Animation */
+  --animation-duration: 500ms;
+  --animation-easing: cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-distance: 16px;
 }
 
 @media (min-width: 768px) {
@@ -41,7 +54,11 @@
   --color-background: var(--color-bg);
   --color-foreground: var(--color-fg);
   --color-muted: var(--color-muted);
+  --color-muted-light: var(--color-muted-light);
   --color-border: var(--color-border);
+  --color-surface: var(--color-surface);
+  --color-accent: var(--color-accent);
+  --color-accent-secondary: var(--color-accent-secondary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -55,6 +72,115 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  line-height: 1.2;
-  font-weight: 600;
+  line-height: 1.1;
+  font-weight: 700;
 }
+
+/* Form Styles */
+input, textarea {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  color: var(--color-fg);
+  font-size: var(--font-size-base);
+  width: 100%;
+  outline: none;
+  transition: border-color var(--animation-duration) var(--animation-easing),
+              box-shadow var(--animation-duration) var(--animation-easing);
+}
+
+input:focus, textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.15);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--color-muted);
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(var(--animation-distance));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(calc(var(--animation-distance) * -1));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animation Utilities */
+.animate-fade-in-up {
+  opacity: 0;
+}
+
+.animate-fade-in-down {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-fade-in-up.is-visible {
+    animation: fadeInUp var(--animation-duration) var(--animation-easing) forwards;
+  }
+
+  .animate-fade-in-down.is-visible {
+    animation: fadeInDown var(--animation-duration) var(--animation-easing) forwards;
+  }
+
+  .animate-on-load {
+    animation: fadeInDown 400ms var(--animation-easing) forwards;
+  }
+
+  .hover-lift {
+    transition: transform var(--animation-duration) var(--animation-easing),
+                border-color var(--animation-duration) var(--animation-easing);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  .hover-scale {
+    transition: transform var(--animation-duration) var(--animation-easing);
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+}
+
+/* Reduced motion - show content immediately */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up,
+  .animate-fade-in-down {
+    opacity: 1;
+  }
+}
+
+/* Stagger delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
