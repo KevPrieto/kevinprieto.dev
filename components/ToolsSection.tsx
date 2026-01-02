@@ -23,7 +23,7 @@ export function ToolsSection() {
               <div
                 className={`w-12 h-12 rounded-lg flex items-center justify-center text-[var(--font-size-lg)] font-bold ${
                   tool.accent
-                    ? "bg-[var(--color-accent)] text-[var(--color-bg)]"
+                    ? "bg-[var(--color-accent)] text-[var(--color-accent-text)]"
                     : "bg-[var(--color-border)] text-[var(--color-fg)]"
                 }`}
               >

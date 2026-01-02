@@ -1,15 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* Colors - Premium Dark Theme */
-  --color-bg: #0c0c0e;
-  --color-fg: #f0f0f2;
-  --color-muted: #6b6b70;
-  --color-muted-light: #9a9aa0;
-  --color-border: #27272a;
-  --color-surface: #18181b;
-
-  /* Accent Colors - Soft Lavender & Cyan */
+  /* Shared tokens */
   --color-accent: #a78bfa;
   --color-accent-secondary: #67e8f9;
 
@@ -50,6 +42,61 @@
   }
 }
 
+/* Dark Theme (default) */
+[data-theme="dark"] {
+  --color-bg: #0a0a0c;
+  --color-fg: #f5f5f7;
+  --color-surface: #161618;
+  --color-surface-2: #1c1c1e;
+  --color-border: #2a2a2e;
+  --color-muted: #6e6e73;
+  --color-muted-light: #98989d;
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --color-accent-text: #0a0a0c;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --color-bg: #f5f5f7;
+  --color-fg: #1d1d1f;
+  --color-surface: #ffffff;
+  --color-surface-2: #e8e8ed;
+  --color-border: #d2d2d7;
+  --color-muted: #6e6e73;
+  --color-muted-light: #86868b;
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --color-accent-text: #1d1d1f;
+}
+
+/* System preference fallback when no data-theme is set */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --color-bg: #0a0a0c;
+    --color-fg: #f5f5f7;
+    --color-surface: #161618;
+    --color-surface-2: #1c1c1e;
+    --color-border: #2a2a2e;
+    --color-muted: #6e6e73;
+    --color-muted-light: #98989d;
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --color-accent-text: #0a0a0c;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --color-bg: #f5f5f7;
+    --color-fg: #1d1d1f;
+    --color-surface: #ffffff;
+    --color-surface-2: #e8e8ed;
+    --color-border: #d2d2d7;
+    --color-muted: #6e6e73;
+    --color-muted-light: #86868b;
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --color-accent-text: #1d1d1f;
+  }
+}
+
 @theme inline {
   --color-background: var(--color-bg);
   --color-foreground: var(--color-fg);
@@ -69,6 +116,7 @@ body {
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   font-size: var(--font-size-base);
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -87,7 +135,8 @@ input, textarea {
   width: 100%;
   outline: none;
   transition: border-color var(--animation-duration) var(--animation-easing),
-              box-shadow var(--animation-duration) var(--animation-easing);
+              box-shadow var(--animation-duration) var(--animation-easing),
+              background-color 0.3s ease;
 }
 
 input:focus, textarea:focus {
@@ -131,6 +180,17 @@ input::placeholder, textarea::placeholder {
   }
 }
 
+@keyframes navbarEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Animation Utilities */
 .animate-fade-in-up {
   opacity: 0;
@@ -151,6 +211,10 @@ input::placeholder, textarea::placeholder {
 
   .animate-on-load {
     animation: fadeInDown 400ms var(--animation-easing) forwards;
+  }
+
+  .animate-navbar-enter {
+    animation: navbarEnter 350ms var(--animation-easing) forwards;
   }
 
   .hover-lift {
@@ -175,6 +239,12 @@ input::placeholder, textarea::placeholder {
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-in-up,
   .animate-fade-in-down {
+    opacity: 1;
+  }
+
+  .animate-navbar-enter,
+  .animate-on-load {
+    animation: none;
     opacity: 1;
   }
 }

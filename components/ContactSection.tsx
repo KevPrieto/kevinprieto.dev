@@ -3,9 +3,9 @@ import { Section } from "./Section";
 export function ContactSection() {
   return (
     <Section id="contact" title="Contact" subtitle="Get in touch">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-[var(--space-xl)]">
+      <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr] gap-[var(--space-xl)]">
         {/* Contact Form */}
-        <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-[var(--space-xl)]">
+        <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-[var(--space-xl)] lg:px-[var(--space-2xl)]">
           <h3 className="text-[var(--font-size-2xl)] font-bold mb-[var(--space-lg)]">
             Send a message
           </h3>
@@ -57,7 +57,7 @@ export function ContactSection() {
             </div>
             <button
               type="submit"
-              className="w-full bg-[var(--color-accent)] text-[var(--color-bg)] font-bold py-3 px-6 rounded-lg hover:opacity-90"
+              className="w-full bg-[var(--color-accent)] text-[var(--color-accent-text)] font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity"
             >
               Send Message
             </button>

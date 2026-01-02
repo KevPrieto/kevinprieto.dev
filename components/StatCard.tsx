@@ -6,8 +6,8 @@ interface StatCardProps {
 
 export function StatCard({ value, label, variant = "primary" }: StatCardProps) {
   const styles = variant === "primary"
-    ? "bg-[var(--color-accent)] text-[var(--color-bg)]"
-    : "bg-[var(--color-accent-secondary)] text-[var(--color-bg)]";
+    ? "bg-[var(--color-accent)] text-[var(--color-accent-text)]"
+    : "bg-[var(--color-accent-secondary)] text-[var(--color-accent-text)]";
 
   return (
     <div
@@ -16,7 +16,7 @@ export function StatCard({ value, label, variant = "primary" }: StatCardProps) {
       <span className="text-[var(--font-size-2xl)] font-bold leading-none">
         {value}
       </span>
-      <span className="text-[var(--font-size-sm)] opacity-80 mt-1">
+      <span className="text-[var(--font-size-sm)] mt-1">
         {label}
       </span>
     </div>

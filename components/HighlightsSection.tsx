@@ -1,5 +1,6 @@
 import { Container } from "./Container";
 import { AnimateOnScroll } from "./AnimateOnScroll";
+import { ArrowRightIcon } from "./Icons";
 
 export function HighlightsSection() {
   return (
@@ -10,22 +11,22 @@ export function HighlightsSection() {
           <AnimateOnScroll>
             <div className="bg-[var(--color-accent)] rounded-2xl p-[var(--space-xl)] flex flex-col justify-between min-h-[320px] hover-scale">
               <div>
-                <p className="text-[var(--color-bg)] text-[var(--font-size-sm)] opacity-80 mb-[var(--space-sm)]">
+                <p className="text-[var(--color-accent-text)] text-[var(--font-size-sm)] mb-[var(--space-sm)]">
                   Approach
                 </p>
-                <h3 className="text-[var(--color-bg)] text-[var(--font-size-3xl)] font-bold leading-tight">
+                <h3 className="text-[var(--color-accent-text)] text-[var(--font-size-3xl)] font-bold leading-tight">
                   Clean Code,
                   <br />
                   Clear Purpose
                 </h3>
               </div>
               <div className="flex items-center justify-between mt-[var(--space-lg)]">
-                <p className="text-[var(--color-bg)] text-[var(--font-size-sm)] opacity-80 max-w-[70%]">
+                <p className="text-[var(--color-accent-text)] text-[var(--font-size-sm)] max-w-[70%]">
                   Placeholder text about development philosophy and approach.
                 </p>
                 {/* Arrow indicator */}
                 <div className="w-12 h-12 rounded-full bg-[var(--color-bg)] flex items-center justify-center">
-                  <span className="text-[var(--color-accent)] text-[var(--font-size-xl)]">→</span>
+                  <ArrowRightIcon className="text-[var(--color-accent)]" />
                 </div>
               </div>
             </div>
@@ -57,7 +58,7 @@ export function HighlightsSection() {
                 </div>
                 {/* Arrow indicator */}
                 <div className="w-12 h-12 rounded-full bg-[var(--color-accent-secondary)] flex items-center justify-center flex-shrink-0 ml-[var(--space-sm)]">
-                  <span className="text-[var(--color-bg)] text-[var(--font-size-xl)]">→</span>
+                  <ArrowRightIcon className="text-[var(--color-accent-text)]" />
                 </div>
               </div>
             </div>

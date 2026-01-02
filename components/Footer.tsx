@@ -1,16 +1,25 @@
 import { Container } from "./Container";
+import {
+  ProjectsIcon,
+  ToolsIcon,
+  AboutIcon,
+  ContactIcon,
+  GitHubIcon,
+  LinkedInIcon,
+  XIcon,
+} from "./Icons";
 
-const footerLinks = [
-  { label: "Projects", href: "#projects" },
-  { label: "Tools", href: "#tools" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+const navLinks = [
+  { href: "#projects", label: "Projects", icon: ProjectsIcon },
+  { href: "#tools", label: "Tools", icon: ToolsIcon },
+  { href: "#about", label: "About", icon: AboutIcon },
+  { href: "#contact", label: "Contact", icon: ContactIcon },
 ];
 
 const socialLinks = [
-  { label: "GitHub", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "Twitter", href: "#" },
+  { href: "#", label: "GitHub", icon: GitHubIcon },
+  { href: "#", label: "LinkedIn", icon: LinkedInIcon },
+  { href: "#", label: "Twitter", icon: XIcon },
 ];
 
 export function Footer() {
@@ -25,7 +34,6 @@ export function Footer() {
             </p>
             <p className="text-[var(--font-size-sm)] text-[var(--color-muted-light)] max-w-[20rem]">
               Building digital products with clarity and precision.
-              Placeholder tagline text.
             </p>
           </div>
 
@@ -34,18 +42,21 @@ export function Footer() {
             <p className="text-[var(--font-size-sm)] font-bold text-[var(--color-muted)] mb-[var(--space-sm)]">
               Navigation
             </p>
-            <ul className="space-y-2">
-              {footerLinks.map((link) => (
-                <li key={link.label}>
+            <div className="flex items-center gap-3">
+              {navLinks.map((link) => {
+                const Icon = link.icon;
+                return (
                   <a
+                    key={link.label}
                     href={link.href}
-                    className="text-[var(--font-size-sm)] text-[var(--color-muted-light)] hover:text-[var(--color-fg)]"
+                    className="flex items-center justify-center w-9 h-9 rounded-lg text-[var(--color-muted-light)] hover:text-[var(--color-fg)] hover:bg-[var(--color-surface)] transition-all duration-200"
+                    aria-label={link.label}
                   >
-                    {link.label}
+                    <Icon size={18} />
                   </a>
-                </li>
-              ))}
-            </ul>
+                );
+              })}
+            </div>
           </div>
 
           {/* Social */}
@@ -53,18 +64,21 @@ export function Footer() {
             <p className="text-[var(--font-size-sm)] font-bold text-[var(--color-muted)] mb-[var(--space-sm)]">
               Connect
             </p>
-            <ul className="space-y-2">
-              {socialLinks.map((link) => (
-                <li key={link.label}>
+            <div className="flex items-center gap-3">
+              {socialLinks.map((link) => {
+                const Icon = link.icon;
+                return (
                   <a
+                    key={link.label}
                     href={link.href}
-                    className="text-[var(--font-size-sm)] text-[var(--color-muted-light)] hover:text-[var(--color-fg)]"
+                    className="flex items-center justify-center w-9 h-9 rounded-lg text-[var(--color-muted-light)] hover:text-[var(--color-fg)] hover:bg-[var(--color-surface)] transition-all duration-200"
+                    aria-label={link.label}
                   >
-                    {link.label}
+                    <Icon size={18} />
                   </a>
-                </li>
-              ))}
-            </ul>
+                );
+              })}
+            </div>
           </div>
         </div>
 
