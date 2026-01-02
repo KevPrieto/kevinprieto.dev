@@ -7,16 +7,17 @@ interface StatCardProps {
 export function StatCard({ value, label, variant = "primary" }: StatCardProps) {
   const styles = variant === "primary"
     ? "bg-[var(--color-accent)] text-[var(--color-accent-text)]"
-    : "bg-[var(--color-accent-secondary)] text-[var(--color-accent-text)]";
+    : "bg-[var(--color-accent-secondary)] text-[var(--color-bg)]";
 
   return (
     <div
       className={`${styles} rounded-xl px-[var(--space-md)] py-[var(--space-sm)] inline-flex flex-col hover-scale`}
+      style={{ boxShadow: "var(--shadow-soft)" }}
     >
       <span className="text-[var(--font-size-2xl)] font-bold leading-none">
         {value}
       </span>
-      <span className="text-[var(--font-size-sm)] mt-1">
+      <span className="text-[var(--font-size-sm)] mt-1 opacity-90">
         {label}
       </span>
     </div>

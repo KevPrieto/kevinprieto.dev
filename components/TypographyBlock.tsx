@@ -6,9 +6,13 @@ export function TypographyBlock() {
     <section className="py-[var(--space-2xl)] overflow-hidden">
       <Container>
         <div className="relative">
-          {/* Background text - large, faded */}
+          {/* Background text - large, faded - uses theme-aware opacity */}
           <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[clamp(8rem,20vw,16rem)] font-bold leading-none text-[var(--color-fg)] opacity-[0.02] select-none pointer-events-none whitespace-nowrap"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[clamp(8rem,20vw,16rem)] font-bold leading-none select-none pointer-events-none whitespace-nowrap"
+            style={{
+              color: "var(--color-fg)",
+              opacity: 0.03,
+            }}
             aria-hidden="true"
           >
             DEVELOPER

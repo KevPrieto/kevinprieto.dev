@@ -48,12 +48,18 @@ export function Hero() {
           {/* Image Column - Card Container */}
           <div className="w-full lg:w-[45%] order-1 lg:order-2">
             <AnimateOnScroll delay={150}>
-              <div className="relative bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-[var(--space-lg)] hover-scale">
+              <div
+                className="relative bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-[var(--space-lg)] hover-scale"
+                style={{ boxShadow: "var(--shadow-soft)" }}
+              >
                 {/* Decorative accent */}
                 <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-[var(--color-accent)]" />
                 <div className="absolute top-4 right-8 w-2 h-2 rounded-full bg-[var(--color-accent-secondary)]" />
 
-                <div className="relative aspect-[4/5] w-full max-w-[280px] mx-auto overflow-hidden rounded-xl border border-[var(--color-border)]/50 shadow-lg shadow-black/20">
+                <div
+                  className="relative aspect-[4/5] w-full max-w-[280px] mx-auto overflow-hidden rounded-xl border border-[var(--color-border)]"
+                  style={{ boxShadow: "var(--shadow-elevated)" }}
+                >
                   <Image
                     src="/images/profile.jpg"
                     alt="Kevin Prieto"
@@ -64,17 +70,17 @@ export function Hero() {
                 </div>
 
                 {/* Social Icons */}
-                <div className="mt-[var(--space-md)] flex items-center justify-center gap-4">
+                <div className="mt-[var(--space-md)] flex items-center justify-center gap-3">
                   {socialLinks.map((link) => {
                     const Icon = link.icon;
                     return (
                       <a
                         key={link.label}
                         href={link.href}
-                        className="w-10 h-10 rounded-lg bg-[var(--color-border)] flex items-center justify-center text-[var(--color-muted-light)] hover:text-[var(--color-fg)] hover:bg-[var(--color-accent)]/20 transition-all duration-200"
+                        className="flex items-center justify-center w-10 h-10 rounded-lg bg-[var(--color-surface-2)] text-[var(--color-muted-light)] hover:text-[var(--color-fg)] hover:bg-[var(--color-accent)]/20 transition-all duration-200"
                         aria-label={link.label}
                       >
-                        <Icon />
+                        <Icon size={20} />
                       </a>
                     );
                   })}

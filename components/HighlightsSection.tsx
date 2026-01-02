@@ -9,9 +9,12 @@ export function HighlightsSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[var(--space-md)]">
           {/* Card 1 - Accent background */}
           <AnimateOnScroll>
-            <div className="bg-[var(--color-accent)] rounded-2xl p-[var(--space-xl)] flex flex-col justify-between min-h-[320px] hover-scale">
+            <div
+              className="bg-[var(--color-accent)] rounded-2xl p-[var(--space-xl)] flex flex-col justify-between min-h-[320px] hover-scale"
+              style={{ boxShadow: "var(--shadow-elevated)" }}
+            >
               <div>
-                <p className="text-[var(--color-accent-text)] text-[var(--font-size-sm)] mb-[var(--space-sm)]">
+                <p className="text-[var(--color-accent-text)] text-[var(--font-size-sm)] mb-[var(--space-sm)] opacity-80">
                   Approach
                 </p>
                 <h3 className="text-[var(--color-accent-text)] text-[var(--font-size-3xl)] font-bold leading-tight">
@@ -21,12 +24,12 @@ export function HighlightsSection() {
                 </h3>
               </div>
               <div className="flex items-center justify-between mt-[var(--space-lg)]">
-                <p className="text-[var(--color-accent-text)] text-[var(--font-size-sm)] max-w-[70%]">
+                <p className="text-[var(--color-accent-text)] text-[var(--font-size-sm)] max-w-[70%] opacity-90">
                   Placeholder text about development philosophy and approach.
                 </p>
                 {/* Arrow indicator */}
                 <div className="w-12 h-12 rounded-full bg-[var(--color-bg)] flex items-center justify-center">
-                  <ArrowRightIcon className="text-[var(--color-accent)]" />
+                  <ArrowRightIcon className="text-[var(--color-accent)]" size={20} />
                 </div>
               </div>
             </div>
@@ -34,7 +37,10 @@ export function HighlightsSection() {
 
           {/* Card 2 - Surface background */}
           <AnimateOnScroll delay={100}>
-            <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-[var(--space-xl)] flex flex-col justify-between min-h-[320px] hover-scale hover:border-[var(--color-accent)]/30">
+            <div
+              className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-[var(--space-xl)] flex flex-col justify-between min-h-[320px] hover-scale hover:border-[var(--color-accent)]/30"
+              style={{ boxShadow: "var(--shadow-soft)" }}
+            >
               <div>
                 <p className="text-[var(--color-muted-light)] text-[var(--font-size-sm)] mb-[var(--space-sm)]">
                   Stack
@@ -50,7 +56,7 @@ export function HighlightsSection() {
                   {["React", "Next.js", "TypeScript", "Node"].map((tech) => (
                     <span
                       key={tech}
-                      className="text-[var(--font-size-xs)] text-[var(--color-fg)] bg-[var(--color-border)] px-3 py-1 rounded-full"
+                      className="text-[var(--font-size-xs)] text-[var(--color-fg)] bg-[var(--color-surface-2)] border border-[var(--color-border)] px-3 py-1 rounded-full"
                     >
                       {tech}
                     </span>
@@ -58,7 +64,7 @@ export function HighlightsSection() {
                 </div>
                 {/* Arrow indicator */}
                 <div className="w-12 h-12 rounded-full bg-[var(--color-accent-secondary)] flex items-center justify-center flex-shrink-0 ml-[var(--space-sm)]">
-                  <ArrowRightIcon className="text-[var(--color-accent-text)]" />
+                  <ArrowRightIcon className="text-[var(--color-bg)]" size={20} />
                 </div>
               </div>
             </div>
