@@ -18,7 +18,10 @@ export function AboutSection() {
 
         {/* Highlights Column */}
         <div className="space-y-[var(--space-md)]">
-          <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-[var(--space-lg)]">
+          <div
+            className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-[var(--space-lg)]"
+            style={{ boxShadow: "var(--shadow-soft)" }}
+          >
             <h3 className="text-[var(--font-size-lg)] font-bold mb-[var(--space-sm)]">
               Focus Areas
             </h3>
@@ -38,7 +41,10 @@ export function AboutSection() {
             </ul>
           </div>
 
-          <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-[var(--space-lg)]">
+          <div
+            className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-[var(--space-lg)]"
+            style={{ boxShadow: "var(--shadow-soft)" }}
+          >
             <h3 className="text-[var(--font-size-lg)] font-bold mb-[var(--space-sm)]">
               Currently
             </h3>

@@ -42,17 +42,17 @@ export function Footer() {
             <p className="text-[var(--font-size-sm)] font-bold text-[var(--color-muted)] mb-[var(--space-sm)]">
               Navigation
             </p>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               {navLinks.map((link) => {
                 const Icon = link.icon;
                 return (
                   <a
                     key={link.label}
                     href={link.href}
-                    className="flex items-center justify-center w-9 h-9 rounded-lg text-[var(--color-muted-light)] hover:text-[var(--color-fg)] hover:bg-[var(--color-surface)] transition-all duration-200"
+                    className="flex items-center justify-center w-10 h-10 rounded-lg text-[var(--color-muted-light)] hover:text-[var(--color-fg)] hover:bg-[var(--color-surface)] transition-all duration-200"
                     aria-label={link.label}
                   >
-                    <Icon size={18} />
+                    <Icon size={20} />
                   </a>
                 );
               })}
@@ -64,17 +64,17 @@ export function Footer() {
             <p className="text-[var(--font-size-sm)] font-bold text-[var(--color-muted)] mb-[var(--space-sm)]">
               Connect
             </p>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               {socialLinks.map((link) => {
                 const Icon = link.icon;
                 return (
                   <a
                     key={link.label}
                     href={link.href}
-                    className="flex items-center justify-center w-9 h-9 rounded-lg text-[var(--color-muted-light)] hover:text-[var(--color-fg)] hover:bg-[var(--color-surface)] transition-all duration-200"
+                    className="flex items-center justify-center w-10 h-10 rounded-lg text-[var(--color-muted-light)] hover:text-[var(--color-fg)] hover:bg-[var(--color-surface)] transition-all duration-200"
                     aria-label={link.label}
                   >
-                    <Icon size={18} />
+                    <Icon size={20} />
                   </a>
                 );
               })}

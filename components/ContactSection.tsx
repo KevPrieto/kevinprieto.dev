@@ -1,11 +1,21 @@
 import { Section } from "./Section";
+import { GitHubIcon, LinkedInIcon, XIcon } from "./Icons";
+
+const socialPlatforms = [
+  { name: "GitHub", handle: "@placeholder", icon: GitHubIcon },
+  { name: "LinkedIn", handle: "@placeholder", icon: LinkedInIcon },
+  { name: "Twitter", handle: "@placeholder", icon: XIcon },
+];
 
 export function ContactSection() {
   return (
     <Section id="contact" title="Contact" subtitle="Get in touch">
       <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr] gap-[var(--space-xl)]">
         {/* Contact Form */}
-        <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-[var(--space-xl)] lg:px-[var(--space-2xl)]">
+        <div
+          className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-[var(--space-xl)] lg:px-[var(--space-2xl)]"
+          style={{ boxShadow: "var(--shadow-soft)" }}
+        >
           <h3 className="text-[var(--font-size-2xl)] font-bold mb-[var(--space-lg)]">
             Send a message
           </h3>
@@ -66,7 +76,10 @@ export function ContactSection() {
 
         {/* Contact Info */}
         <div className="space-y-[var(--space-md)]">
-          <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-[var(--space-lg)]">
+          <div
+            className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-[var(--space-lg)]"
+            style={{ boxShadow: "var(--shadow-soft)" }}
+          >
             <h3 className="text-[var(--font-size-lg)] font-bold mb-[var(--space-sm)]">
               Direct Contact
             </h3>
@@ -79,17 +92,24 @@ export function ContactSection() {
           </div>
 
           <div className="space-y-[var(--space-sm)]">
-            {["GitHub", "LinkedIn", "Twitter"].map((platform) => (
-              <div
-                key={platform}
-                className="flex items-center justify-between bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-[var(--space-md)]"
-              >
-                <span className="font-bold">{platform}</span>
-                <span className="text-[var(--color-muted-light)] text-[var(--font-size-sm)]">
-                  @placeholder
-                </span>
-              </div>
-            ))}
+            {socialPlatforms.map((platform) => {
+              const Icon = platform.icon;
+              return (
+                <div
+                  key={platform.name}
+                  className="flex items-center justify-between bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-[var(--space-md)]"
+                  style={{ boxShadow: "var(--shadow-soft)" }}
+                >
+                  <div className="flex items-center gap-3">
+                    <Icon size={20} className="text-[var(--color-muted-light)]" />
+                    <span className="font-bold">{platform.name}</span>
+                  </div>
+                  <span className="text-[var(--color-muted-light)] text-[var(--font-size-sm)]">
+                    {platform.handle}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

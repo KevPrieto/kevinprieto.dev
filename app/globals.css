@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  /* Shared tokens */
-  --color-accent: #a78bfa;
-  --color-accent-secondary: #67e8f9;
+  /* Accent Colors (shared) */
+  --color-accent-1: #a78bfa;
+  --color-accent-2: #67e8f9;
 
   /* Typography Scale */
   --font-size-xs: 0.875rem;
@@ -46,26 +46,34 @@
 [data-theme="dark"] {
   --color-bg: #0a0a0c;
   --color-fg: #f5f5f7;
+  --color-text: #f5f5f7;
   --color-surface: #161618;
   --color-surface-2: #1c1c1e;
   --color-border: #2a2a2e;
-  --color-muted: #6e6e73;
-  --color-muted-light: #98989d;
+  --color-muted: #86868b;
+  --color-muted-light: #a1a1a6;
   --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.4);
   --color-accent-text: #0a0a0c;
+  --color-accent: var(--color-accent-1);
+  --color-accent-secondary: var(--color-accent-2);
 }
 
-/* Light Theme */
+/* Light Theme (Apple-style) */
 [data-theme="light"] {
-  --color-bg: #f5f5f7;
+  --color-bg: #fafafa;
   --color-fg: #1d1d1f;
+  --color-text: #1d1d1f;
   --color-surface: #ffffff;
-  --color-surface-2: #e8e8ed;
-  --color-border: #d2d2d7;
-  --color-muted: #6e6e73;
-  --color-muted-light: #86868b;
-  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
-  --color-accent-text: #1d1d1f;
+  --color-surface-2: #f5f5f7;
+  --color-border: #d1d1d6;
+  --color-muted: #86868b;
+  --color-muted-light: #6e6e73;
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-elevated: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --color-accent-text: #ffffff;
+  --color-accent: var(--color-accent-1);
+  --color-accent-secondary: var(--color-accent-2);
 }
 
 /* System preference fallback when no data-theme is set */
@@ -73,27 +81,35 @@
   :root:not([data-theme]) {
     --color-bg: #0a0a0c;
     --color-fg: #f5f5f7;
+    --color-text: #f5f5f7;
     --color-surface: #161618;
     --color-surface-2: #1c1c1e;
     --color-border: #2a2a2e;
-    --color-muted: #6e6e73;
-    --color-muted-light: #98989d;
+    --color-muted: #86868b;
+    --color-muted-light: #a1a1a6;
     --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.4);
     --color-accent-text: #0a0a0c;
+    --color-accent: var(--color-accent-1);
+    --color-accent-secondary: var(--color-accent-2);
   }
 }
 
 @media (prefers-color-scheme: light) {
   :root:not([data-theme]) {
-    --color-bg: #f5f5f7;
+    --color-bg: #fafafa;
     --color-fg: #1d1d1f;
+    --color-text: #1d1d1f;
     --color-surface: #ffffff;
-    --color-surface-2: #e8e8ed;
-    --color-border: #d2d2d7;
-    --color-muted: #6e6e73;
-    --color-muted-light: #86868b;
-    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
-    --color-accent-text: #1d1d1f;
+    --color-surface-2: #f5f5f7;
+    --color-border: #d1d1d6;
+    --color-muted: #86868b;
+    --color-muted-light: #6e6e73;
+    --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-elevated: 0 4px 16px rgba(0, 0, 0, 0.1);
+    --color-accent-text: #ffffff;
+    --color-accent: var(--color-accent-1);
+    --color-accent-secondary: var(--color-accent-2);
   }
 }
 
@@ -141,7 +157,7 @@ input, textarea {
 
 input:focus, textarea:focus {
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.15);
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.2);
 }
 
 input::placeholder, textarea::placeholder {
@@ -219,11 +235,13 @@ input::placeholder, textarea::placeholder {
 
   .hover-lift {
     transition: transform var(--animation-duration) var(--animation-easing),
-                border-color var(--animation-duration) var(--animation-easing);
+                border-color var(--animation-duration) var(--animation-easing),
+                box-shadow var(--animation-duration) var(--animation-easing);
   }
 
   .hover-lift:hover {
     transform: translateY(-2px);
+    box-shadow: var(--shadow-elevated);
   }
 
   .hover-scale {
@@ -246,6 +264,16 @@ input::placeholder, textarea::placeholder {
   .animate-on-load {
     animation: none;
     opacity: 1;
+  }
+
+  .hover-lift,
+  .hover-scale {
+    transition: none;
+  }
+
+  .hover-lift:hover,
+  .hover-scale:hover {
+    transform: none;
   }
 }
 
