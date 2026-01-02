@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <linearGradient id="wt-gradient" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#4D4D4D"/>
+      <stop offset="100%" stop-color="#0C0C0C"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#wt-gradient)" d="M3.6 2.4A2.4 2.4 0 0 0 1.2 4.8v14.4a2.4 2.4 0 0 0 2.4 2.4h16.8a2.4 2.4 0 0 0 2.4-2.4V4.8a2.4 2.4 0 0 0-2.4-2.4Zm0 1.2h16.8c.667 0 1.2.533 1.2 1.2v14.4c0 .667-.533 1.2-1.2 1.2H3.6c-.667 0-1.2-.533-1.2-1.2V4.8c0-.667.533-1.2 1.2-1.2Z"/>
+  <path fill="#CCCCCC" d="m7.074 7.318 4.66 3.612-4.66 3.612-.926-1.164 3.04-2.448-3.04-2.448Zm5.726 6.482h4.2v1.2H12.8Z"/>
+</svg>

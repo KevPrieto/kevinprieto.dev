@@ -1,85 +1,88 @@
 import { Section } from "./Section";
 import { AnimateOnScroll } from "./AnimateOnScroll";
-import {
-  JavaIcon,
-  MavenIcon,
-  SpringBootIcon,
-  NextjsIcon,
-  ReactIcon,
-  TypeScriptIcon,
-  PythonIcon,
-  BashIcon,
-  PostgreSQLIcon,
-  CSharpIcon,
-  KotlinIcon,
-  SwiftIcon,
-  PowerShellIcon,
-  TerminalIcon,
-  GitIcon,
-  GitHubToolIcon,
-  GitLabIcon,
-  PowerBIIcon,
-  ExcelIcon,
-  SonarQubeIcon,
-  JiraIcon,
-  PostmanIcon,
-  ChatGPTIcon,
-  ClaudeIcon,
-} from "./ToolIcons";
+import Image from "next/image";
+
+// Tool logo paths mapping
+const logos: Record<string, string> = {
+  java: "/logos/java.svg",
+  maven: "/logos/maven.svg",
+  spring: "/logos/spring.svg",
+  nextjs: "/logos/nextjs.svg",
+  react: "/logos/react.svg",
+  typescript: "/logos/typescript.svg",
+  python: "/logos/python.svg",
+  bash: "/logos/bash.svg",
+  postgresql: "/logos/postgresql.svg",
+  csharp: "/logos/csharp.svg",
+  kotlin: "/logos/kotlin.svg",
+  swift: "/logos/swift.svg",
+  "windows-terminal": "/logos/windows-terminal.svg",
+  powershell: "/logos/powershell.svg",
+  git: "/logos/git.svg",
+  github: "/logos/github.svg",
+  gitlab: "/logos/gitlab.svg",
+  powerbi: "/logos/powerbi.svg",
+  excel: "/logos/excel.svg",
+  sonarqube: "/logos/sonarqube.svg",
+  jira: "/logos/jira.svg",
+  postman: "/logos/postman.svg",
+  openai: "/logos/openai.svg",
+  claude: "/logos/claude.svg",
+};
 
 // Tool categories with visual hierarchy
 const toolCategories = {
   primary: {
     label: "Core Backend & JVM",
     tools: [
-      { name: "Java", icon: JavaIcon },
-      { name: "Maven", icon: MavenIcon },
-      { name: "Spring Boot", icon: SpringBootIcon },
+      { name: "Java", logo: "java" },
+      { name: "Maven", logo: "maven" },
+      { name: "Spring Boot", logo: "spring" },
     ],
   },
   standard: [
     {
       label: "Web & Frontend",
       tools: [
-        { name: "Next.js", icon: NextjsIcon },
-        { name: "React", icon: ReactIcon },
-        { name: "TypeScript", icon: TypeScriptIcon },
+        { name: "Next.js", logo: "nextjs" },
+        { name: "React", logo: "react" },
+        { name: "TypeScript", logo: "typescript" },
       ],
     },
     {
       label: "Scripting & Automation",
       tools: [
-        { name: "Bash scripting", icon: BashIcon },
-        { name: "Python", icon: PythonIcon },
+        { name: "Bash", logo: "bash" },
+        { name: "Python", logo: "python" },
       ],
     },
     {
       label: "Databases",
-      tools: [{ name: "PostgreSQL", icon: PostgreSQLIcon }],
+      tools: [{ name: "PostgreSQL", logo: "postgresql" }],
     },
     {
       label: "Languages",
       tools: [
-        { name: "Python", icon: PythonIcon },
-        { name: "C#", icon: CSharpIcon },
-        { name: "Kotlin", icon: KotlinIcon },
-        { name: "Swift", icon: SwiftIcon },
+        { name: "Python", logo: "python" },
+        { name: "C#", logo: "csharp" },
+        { name: "Kotlin", logo: "kotlin" },
+        { name: "Swift", logo: "swift" },
       ],
     },
     {
       label: "DevOps / Terminals",
       tools: [
-        { name: "Bash", icon: BashIcon },
-        { name: "cmd", icon: TerminalIcon },
-        { name: "PowerShell", icon: PowerShellIcon },
+        { name: "Bash", logo: "bash" },
+        { name: "cmd", logo: "windows-terminal" },
+        { name: "PowerShell", logo: "powershell" },
       ],
     },
     {
       label: "Version Control",
       tools: [
-        { name: "Git", icon: GitIcon },
-        { name: "GitHub", icon: GitHubToolIcon },
-        { name: "GitLab", icon: GitLabIcon },
+        { name: "Git", logo: "git" },
+        { name: "GitHub", logo: "github" },
+        { name: "GitLab", logo: "gitlab" },
       ],
     },
   ],
@@ -87,54 +90,64 @@ const toolCategories = {
     {
       label: "Data / Analytics",
       tools: [
-        { name: "Power BI", icon: PowerBIIcon },
-        { name: "Excel", icon: ExcelIcon },
+        { name: "Power BI", logo: "powerbi" },
+        { name: "Excel", logo: "excel" },
       ],
     },
     {
       label: "Quality / Delivery",
       tools: [
-        { name: "SonarQube", icon: SonarQubeIcon },
-        { name: "Jira", icon: JiraIcon },
-        { name: "Postman", icon: PostmanIcon },
+        { name: "SonarQube", logo: "sonarqube" },
+        { name: "Jira", logo: "jira" },
+        { name: "Postman", logo: "postman" },
       ],
     },
   ],
   auxiliary: {
     label: "AI Tools",
     tools: [
-      { name: "ChatGPT Pro", icon: ChatGPTIcon },
-      { name: "Claude Pro", icon: ClaudeIcon },
+      { name: "ChatGPT Pro", logo: "openai" },
+      { name: "Claude Pro", logo: "claude" },
     ],
   },
 };
 
 interface ToolItemProps {
   name: string;
-  icon: React.ComponentType<{ size?: number; className?: string }>;
+  logo: string;
   size?: "lg" | "md" | "sm";
 }
 
-function ToolItem({ name, icon: Icon, size = "md" }: ToolItemProps) {
-  const sizeClasses = {
-    lg: "w-14 h-14",
-    md: "w-11 h-11",
-    sm: "w-9 h-9",
+function ToolItem({ name, logo, size = "md" }: ToolItemProps) {
+  const containerSizes = {
+    lg: "w-16 h-16",
+    md: "w-12 h-12",
+    sm: "w-10 h-10",
   };
 
   const iconSizes = {
-    lg: 32,
-    md: 24,
-    sm: 20,
+    lg: 36,
+    md: 28,
+    sm: 22,
   };
 
+  const logoSrc = logos[logo];
+
   return (
-    <div className="group flex flex-col items-center gap-2">
+    <div className="group flex flex-col items-center gap-3">
       <div
-        className={`${sizeClasses[size]} rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-fg)] group-hover:border-[var(--color-accent)]/40 group-hover:bg-[var(--color-surface)] transition-all duration-200`}
+        className={`${containerSizes[size]} rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] flex items-center justify-center group-hover:border-[var(--color-accent)]/40 group-hover:bg-[var(--color-surface)] transition-all duration-200`}
         style={{ boxShadow: "var(--shadow-soft)" }}
       >
-        <Icon size={iconSizes[size]} />
+        {logoSrc && (
+          <Image
+            src={logoSrc}
+            alt={name}
+            width={iconSizes[size]}
+            height={iconSizes[size]}
+            className="object-contain"
+          />
+        )}
       </div>
       <span className="text-[var(--font-size-xs)] text-[var(--color-muted-light)] text-center leading-tight max-w-[80px]">
         {name}
@@ -145,10 +158,7 @@ function ToolItem({ name, icon: Icon, size = "md" }: ToolItemProps) {
 
 interface CategoryGroupProps {
   label: string;
-  tools: Array<{
-    name: string;
-    icon: React.ComponentType<{ size?: number; className?: string }>;
-  }>;
+  tools: Array<{ name: string; logo: string }>;
   variant?: "primary" | "standard" | "supporting" | "auxiliary";
 }
 
@@ -160,24 +170,28 @@ function CategoryGroup({ label, tools, variant = "standard" }: CategoryGroupProp
     <div
       className={`${
         isPrimary
-          ? "bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-[var(--space-lg)]"
+          ? "bg-[var(--color-surface)] border border-[var(--color-border)] rounded-3xl p-[var(--space-xl)]"
           : ""
       }`}
       style={isPrimary ? { boxShadow: "var(--shadow-soft)" } : undefined}
     >
       <p
-        className={`text-[var(--font-size-xs)] font-medium uppercase tracking-wider mb-[var(--space-sm)] ${
+        className={`text-[var(--font-size-xs)] font-medium uppercase tracking-wider mb-[var(--space-md)] ${
           isAuxiliary ? "text-[var(--color-muted)]" : "text-[var(--color-muted-light)]"
         }`}
       >
         {label}
       </p>
-      <div className={`flex flex-wrap gap-[var(--space-md)] ${isPrimary ? "gap-[var(--space-lg)]" : ""}`}>
-        {tools.map((tool) => (
+      <div
+        className={`flex flex-wrap ${
+          isPrimary ? "gap-[var(--space-xl)] justify-center md:justify-start" : "gap-[var(--space-lg)]"
+        }`}
+      >
+        {tools.map((tool, index) => (
           <ToolItem
-            key={tool.name}
+            key={`${tool.logo}-${index}`}
             name={tool.name}
-            icon={tool.icon}
+            logo={tool.logo}
             size={isPrimary ? "lg" : isAuxiliary ? "sm" : "md"}
           />
         ))}
@@ -189,7 +203,7 @@ function CategoryGroup({ label, tools, variant = "standard" }: CategoryGroupProp
 export function ToolsSection() {
   return (
     <Section id="tools" title="Tools" subtitle="Technologies and platforms I work with">
-      <div className="space-y-[var(--space-xl)]">
+      <div className="space-y-[var(--space-2xl)]">
         {/* Primary Category - Core Backend & JVM (Full Width, Prominent) */}
         <AnimateOnScroll>
           <CategoryGroup
@@ -200,20 +214,22 @@ export function ToolsSection() {
         </AnimateOnScroll>
 
         {/* Standard Categories - Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[var(--space-xl)] gap-y-[var(--space-lg)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[var(--space-2xl)] gap-y-[var(--space-xl)]">
           {toolCategories.standard.map((category, index) => (
             <AnimateOnScroll key={category.label} delay={index * 50}>
-              <CategoryGroup
-                label={category.label}
-                tools={category.tools}
-                variant="standard"
-              />
+              <div className="min-h-[120px]">
+                <CategoryGroup
+                  label={category.label}
+                  tools={category.tools}
+                  variant="standard"
+                />
+              </div>
             </AnimateOnScroll>
           ))}
         </div>
 
         {/* Supporting Categories */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[var(--space-xl)] gap-y-[var(--space-lg)]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[var(--space-2xl)] gap-y-[var(--space-xl)]">
           {toolCategories.supporting.map((category, index) => (
             <AnimateOnScroll key={category.label} delay={index * 50}>
               <CategoryGroup
@@ -227,7 +243,7 @@ export function ToolsSection() {
 
         {/* Auxiliary Category - AI Tools (Subdued, Last) */}
         <AnimateOnScroll delay={100}>
-          <div className="pt-[var(--space-md)] border-t border-[var(--color-border)]">
+          <div className="pt-[var(--space-lg)] border-t border-[var(--color-border)]/50">
             <CategoryGroup
               label={toolCategories.auxiliary.label}
               tools={toolCategories.auxiliary.tools}
