@@ -17,9 +17,9 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { href: "#", label: "GitHub", icon: GitHubIcon },
-  { href: "#", label: "LinkedIn", icon: LinkedInIcon },
-  { href: "#", label: "Twitter", icon: XIcon },
+  { href: "https://github.com/KevPrieto", label: "GitHub", icon: GitHubIcon },
+  { href: "https://www.linkedin.com/in/kevin-prieto-developer/", label: "LinkedIn", icon: LinkedInIcon },
+  { href: "https://x.com/bykevin12", label: "Twitter", icon: XIcon },
 ];
 
 export function Footer() {

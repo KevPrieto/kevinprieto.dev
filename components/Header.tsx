@@ -9,7 +9,6 @@ import {
   ToolsIcon,
   AboutIcon,
   ContactIcon,
-  LogoIcon,
   SunIcon,
   MoonIcon,
 } from "./Icons";
@@ -60,14 +59,7 @@ export function Header() {
       }}
     >
       <Container>
-        <nav className="flex items-center justify-between">
-          <a
-            href="#"
-            className="text-[var(--color-accent)] hover:opacity-80 transition-opacity"
-            aria-label="Home"
-          >
-            <LogoIcon size={24} />
-          </a>
+        <nav className="flex items-center justify-center">
           <div className="flex items-center gap-1">
             <ul className="flex items-center gap-1">
               {navItems.map((item) => {
@@ -76,7 +68,7 @@ export function Header() {
                   <li key={item.label}>
                     <a
                       href={item.href}
-                      className="flex items-center justify-center w-10 h-10 rounded-lg text-[var(--color-muted-light)] hover:text-[var(--color-fg)] hover:bg-[var(--color-surface)] transition-all duration-200"
+                      className="flex items-center justify-center w-10 h-10 rounded-lg text-[var(--color-muted)] hover:text-[var(--color-fg)] hover:bg-[var(--color-surface)] transition-all duration-200"
                       aria-label={item.label}
                     >
                       <Icon size={20} />
@@ -91,7 +83,7 @@ export function Header() {
             />
             <button
               onClick={toggleTheme}
-              className="flex items-center justify-center w-10 h-10 rounded-lg text-[var(--color-muted-light)] hover:text-[var(--color-fg)] hover:bg-[var(--color-surface)] transition-all duration-200"
+              className="flex items-center justify-center w-10 h-10 rounded-lg text-[var(--color-muted)] hover:text-[var(--color-fg)] hover:bg-[var(--color-surface)] transition-all duration-200"
               aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
             >
               {theme === "dark" ? <SunIcon size={20} /> : <MoonIcon size={20} />}

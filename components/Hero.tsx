@@ -8,63 +8,55 @@ import { AnimateOnScroll } from "./AnimateOnScroll";
 import { GitHubIcon, LinkedInIcon, XIcon } from "./Icons";
 
 const socialLinks = [
-  { href: "#", label: "GitHub", icon: GitHubIcon },
-  { href: "#", label: "LinkedIn", icon: LinkedInIcon },
-  { href: "#", label: "Twitter", icon: XIcon },
+  { href: "https://github.com/KevPrieto", label: "GitHub", icon: GitHubIcon },
+  { href: "https://www.linkedin.com/in/kevin-prieto-developer/", label: "LinkedIn", icon: LinkedInIcon },
+  { href: "https://x.com/bykevin12", label: "Twitter", icon: XIcon },
 ];
 
-// Greetings sequence: starts and ends with "Hello, I'm Kevin"
+// Greetings sequence: loops infinitely through all languages
 const greetings = [
-  "Hello, I'm Kevin",
+  "Bienvenido, soy Kevin",
+  "Welcome, I'm Kevin",
   "Hola, soy Kevin",
   "Ciao, sono Kevin",
   "Olá, sou Kevin",
   "Bonjour, je suis Kevin",
   "안녕하세요, 저는 Kevin입니다",
-  "Hello, I'm Kevin",
+  "ようこそ、ケビンです",
 ];
 
 export function Hero() {
   // Multilingual greeting state
   const [greetingIndex, setGreetingIndex] = useState(0);
   const [greetingPhase, setGreetingPhase] = useState<"enter" | "visible" | "exit">("enter");
-  const [greetingComplete, setGreetingComplete] = useState(false);
 
   // Calendly modal state
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
 
-  // Multilingual greeting animation effect
+  // Multilingual greeting animation effect - loops infinitely
   useEffect(() => {
-    if (greetingComplete) return;
-
-    const isLastGreeting = greetingIndex === greetings.length - 1;
-
     if (greetingPhase === "enter") {
       const timer = setTimeout(() => {
         setGreetingPhase("visible");
-      }, 300);
+      }, 500);
       return () => clearTimeout(timer);
     }
 
     if (greetingPhase === "visible") {
       const timer = setTimeout(() => {
-        if (isLastGreeting) {
-          setGreetingComplete(true);
-        } else {
-          setGreetingPhase("exit");
-        }
-      }, 800);
+        setGreetingPhase("exit");
+      }, 1800);
       return () => clearTimeout(timer);
     }
 
     if (greetingPhase === "exit") {
       const timer = setTimeout(() => {
-        setGreetingIndex((prev) => prev + 1);
+        setGreetingIndex((prev) => (prev + 1) % greetings.length);
         setGreetingPhase("enter");
-      }, 300);
+      }, 500);
       return () => clearTimeout(timer);
     }
-  }, [greetingPhase, greetingIndex, greetingComplete]);
+  }, [greetingPhase]);
 
   // Load Calendly script when modal opens
   useEffect(() => {
@@ -106,32 +98,24 @@ export function Hero() {
 
   // Greeting animation styles
   const getGreetingStyle = (): React.CSSProperties => {
-    if (greetingComplete) {
-      return {
-        opacity: 0.5,
-        transform: "translateY(0)",
-        transition: "all 600ms ease-out",
-      };
-    }
-
     switch (greetingPhase) {
       case "enter":
         return {
           opacity: 0,
-          transform: "translateY(12px)",
-          transition: "all 300ms ease-out",
+          transform: "translateY(8px)",
+          transition: "all 500ms ease-out",
         };
       case "visible":
         return {
           opacity: 1,
           transform: "translateY(0)",
-          transition: "all 300ms ease-out",
+          transition: "all 500ms ease-out",
         };
       case "exit":
         return {
           opacity: 0,
-          transform: "translateY(-12px)",
-          transition: "all 300ms ease-in",
+          transform: "translateY(-8px)",
+          transition: "all 500ms ease-in",
         };
     }
   };
@@ -158,11 +142,11 @@ export function Hero() {
 
       <section className="min-h-[90vh] flex flex-col py-[var(--space-xl)] pt-[calc(var(--space-xl)+4rem)]">
         <Container>
-          {/* Part 1: Status Indicator - Centered at top */}
+          {/* Part 1: Status Indicator - Centered at top with Glassmorphism */}
           <div className="flex justify-center mb-[var(--space-lg)]">
-            <div className="flex items-center gap-2 opacity-80">
-              <span className="w-2 h-2 rounded-full bg-green-500" />
-              <span className="text-[var(--font-size-xs)] text-[var(--color-muted-light)]">
+            <div className="glass flex items-center gap-2 px-4 py-2 rounded-full">
+              <span className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.6)]" />
+              <span className="text-[var(--font-size-xs)] font-medium text-[var(--color-fg)]">
                 Available for work
                 <span className="ellipsis-dot">.</span>
                 <span className="ellipsis-dot">.</span>
@@ -187,26 +171,45 @@ export function Hero() {
               {/* Text Column */}
               <div className="flex-1 lg:max-w-[55%] order-2 lg:order-1">
                 <AnimateOnScroll>
-                  <h1 className="text-[var(--font-size-6xl)] font-bold leading-[1] tracking-tight mb-[var(--space-md)]">
-                    Building digital
+                  <h1 className="text-[clamp(2.5rem,8vw,5rem)] font-bold leading-[1.05] tracking-tight mb-[var(--space-md)]">
+                    Building systems.
                     <br />
-                    products with
-                    <br />
-                    <span className="text-[var(--color-accent)]">clarity.</span>
+                    Driving{" "}
+                    <span className="relative inline-block">
+                      <span className="text-[var(--color-accent)] text-glow">direction</span>
+                      <svg
+                        className="absolute -right-12 top-1/2 -translate-y-1/2 hidden lg:block"
+                        width="40"
+                        height="40"
+                        viewBox="0 0 40 40"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M8 20L32 20M32 20L24 12M32 20L24 28"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="text-[var(--color-accent)]"
+                          style={{ filter: 'drop-shadow(0 0 8px rgba(139, 92, 246, 0.4))' }}
+                        />
+                      </svg>
+                    </span>
+                    .
                   </h1>
                 </AnimateOnScroll>
                 <AnimateOnScroll delay={100}>
                   <p className="text-[var(--font-size-lg)] text-[var(--color-muted-light)] leading-relaxed max-w-[28rem] mb-[var(--space-lg)]">
-                    Developer focused on creating thoughtful, well-crafted software.
-                    Placeholder text describing technical approach.
+                    Software engineer focused on backend systems, web applications, and automation. I ship working products.
                   </p>
                 </AnimateOnScroll>
 
                 {/* Stats Row */}
                 <AnimateOnScroll delay={200}>
                   <div className="flex flex-wrap gap-[var(--space-sm)]">
-                    <StatCard value="+12" label="Projects" variant="primary" />
-                    <StatCard value="5+" label="Years" variant="secondary" />
+                    <StatCard value="+4" label="Projects" variant="primary" />
+                    <StatCard value="2+" label="Years" variant="secondary" />
                     <StatCard value="∞" label="Curiosity" variant="primary" />
                   </div>
                 </AnimateOnScroll>
@@ -228,7 +231,7 @@ export function Hero() {
                       style={{ boxShadow: "var(--shadow-elevated)" }}
                     >
                       <Image
-                        src="/images/profile.jpg"
+                        src="/images/profile2.jpg"
                         alt="Kevin Prieto"
                         fill
                         className="object-cover"
@@ -254,23 +257,22 @@ export function Hero() {
                     </div>
 
                     {/* Action CTAs */}
-                    <div className="mt-[var(--space-md)] flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                      {/* Primary CTA - Opens Calendly Modal */}
+                    <div className="mt-[var(--space-md)] flex flex-col gap-3 items-center">
+                      {/* Primary CTA - Opens Calendly Modal with Glassmorphism */}
                       <button
                         onClick={openCalendly}
-                        className="flex-1 px-5 py-3 rounded-full bg-[var(--color-accent)] text-[var(--color-bg)] text-[var(--font-size-sm)] font-medium hover:opacity-90 transition-opacity duration-200"
+                        className="glass-button px-8 py-3.5 rounded-full text-white text-[var(--font-size-sm)] font-medium transition-all duration-300"
                       >
                         Let&apos;s build together
                       </button>
-
-                      {/* Secondary CTA - Download CV */}
-                      <a
-                        href="/cv.pdf"
-                        download
-                        className="flex-1 px-5 py-3 rounded-full border border-[var(--color-border)] text-[var(--color-muted-light)] text-[var(--font-size-sm)] font-medium text-center hover:border-[var(--color-accent)]/40 hover:text-[var(--color-fg)] transition-all duration-200"
+                      {/* Disabled CV Button */}
+                      <button
+                        disabled
+                        className="px-6 py-3 rounded-full border border-[var(--color-border)] text-[var(--color-muted)] text-[var(--font-size-sm)] font-medium cursor-not-allowed opacity-60"
                       >
                         Download CV
-                      </a>
+                        <span className="text-[var(--font-size-xs)] ml-2 opacity-70">Soon</span>
+                      </button>
                     </div>
                   </div>
                 </AnimateOnScroll>

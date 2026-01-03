@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  /* Accent Colors (shared) */
-  --color-accent-1: #a78bfa;
-  --color-accent-2: #67e8f9;
+  /* Accent Colors (shared) - Premium Violet → Indigo Gradient */
+  --color-accent-1: #7c3aed;
+  --color-accent-2: #6366f1;
 
   /* Typography Scale */
   --font-size-xs: 0.875rem;
@@ -68,7 +68,7 @@
   --color-surface-2: #f5f5f7;
   --color-border: #d1d1d6;
   --color-muted: #86868b;
-  --color-muted-light: #6e6e73;
+  --color-muted-light: #515154;
   --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.06);
   --shadow-elevated: 0 4px 16px rgba(0, 0, 0, 0.1);
   --color-accent-text: #ffffff;
@@ -104,7 +104,7 @@
     --color-surface-2: #f5f5f7;
     --color-border: #d1d1d6;
     --color-muted: #86868b;
-    --color-muted-light: #6e6e73;
+    --color-muted-light: #515154;
     --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.06);
     --shadow-elevated: 0 4px 16px rgba(0, 0, 0, 0.1);
     --color-accent-text: #ffffff;
@@ -157,7 +157,7 @@ input, textarea {
 
 input:focus, textarea:focus {
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.2);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25);
 }
 
 input::placeholder, textarea::placeholder {
@@ -250,6 +250,55 @@ input::placeholder, textarea::placeholder {
 
   .hover-scale:hover {
     transform: scale(1.02);
+  }
+
+  /* Glassmorphism utility classes */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-button {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(167, 139, 250, 0.6));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.2);
+  }
+
+  .glass-button:hover {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.9), rgba(167, 139, 250, 0.7));
+    box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.3);
+  }
+
+  /* Light mode glassmorphism */
+  [data-theme="light"] .glass {
+    background: rgba(139, 92, 246, 0.08);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+  }
+
+  [data-theme="light"] .glass-button {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.95), rgba(167, 139, 250, 0.85));
+    border: 1px solid rgba(139, 92, 246, 0.3);
+  }
+
+  [data-theme="light"] .glass-button:hover {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 1), rgba(167, 139, 250, 0.95));
+  }
+
+  /* Text glow effect for glassmorphism aesthetic */
+  .text-glow {
+    text-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+  }
+
+  /* Gradient text utility */
+  .text-gradient-accent {
+    background: linear-gradient(135deg, #7c3aed, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
 

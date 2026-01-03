@@ -11,7 +11,7 @@ export function TypographyBlock() {
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[clamp(8rem,20vw,16rem)] font-bold leading-none select-none pointer-events-none whitespace-nowrap"
             style={{
               color: "var(--color-fg)",
-              opacity: 0.03,
+              opacity: 0.05,
             }}
             aria-hidden="true"
           >
@@ -26,11 +26,11 @@ export function TypographyBlock() {
               </p>
               <h2 className="text-[clamp(3rem,8vw,6rem)] font-bold leading-[0.9] tracking-tight">
                 <span className="block">SOFTWARE</span>
-                <span className="block text-[var(--color-accent)]">ENGINEER</span>
+                <span className="block text-[var(--color-accent)] text-glow">ENGINEER</span>
               </h2>
-              <p className="text-[var(--font-size-xl)] text-[var(--color-muted-light)] mt-[var(--space-lg)] max-w-[32rem] mx-auto">
-                Crafting digital experiences with precision and purpose.
-                Placeholder text for approach description.
+              <p className="text-[var(--font-size-xl)] mt-[var(--space-lg)] max-w-[32rem] mx-auto" style={{ color: "var(--color-fg)", opacity: 0.7 }}>
+                Building robust systems and web applications.
+                Java · Next.js · Automation · Product-focused engineering.
               </p>
             </div>
           </AnimateOnScroll>
