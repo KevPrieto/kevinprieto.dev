@@ -7,12 +7,26 @@ export function AboutSection() {
         {/* Text Column */}
         <div className="space-y-[var(--space-md)]">
           <p className="text-[var(--font-size-lg)] leading-relaxed">
-            Placeholder paragraph about background, experience, and professional
-            journey. This section will contain a genuine introduction.
+            I’m a software engineer with a backend-oriented mindset, focused on
+            building systems that prioritize clarity, structure, and long-term
+            maintainability. I care less about shipping features quickly and more
+            about designing foundations that don’t collapse under their own
+            complexity.
           </p>
+
           <p className="text-[var(--color-muted-light)] leading-relaxed">
-            Additional placeholder text describing technical interests, development
-            philosophy, and what drives the work. Focus on clarity and craft.
+            My background spans backend development, automation, and data-driven
+            work, with a strong focus on Java, clean architecture, and testing.
+            Alongside professional experience, I actively build independent
+            systems like EYLA, where I explore how software can preserve intent,
+            continuity, and orientation over time instead of becoming disposable.
+          </p>
+
+          <p className="text-[var(--color-muted-light)] leading-relaxed">
+            I’m particularly interested in how developers think, how systems age,
+            and how small architectural decisions compound over the long run. I
+            prefer explicit models, deterministic behavior, and tools that help
+            humans reason clearly about what they are building.
           </p>
         </div>
 
@@ -28,15 +42,15 @@ export function AboutSection() {
             <ul className="space-y-2 text-[var(--color-muted-light)]">
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />
-                Frontend Development
+                Backend systems and clean architecture
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent-secondary)]" />
-                System Design
+                State, continuity, and long-term system design
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />
-                Developer Experience
+                Testing, automation, and developer tooling
               </li>
             </ul>
           </div>
@@ -48,8 +62,11 @@ export function AboutSection() {
             <h3 className="text-[var(--font-size-lg)] font-bold mb-[var(--space-sm)]">
               Currently
             </h3>
-            <p className="text-[var(--color-muted-light)]">
-              Placeholder for current work, interests, or availability status.
+            <p className="text-[var(--color-muted-light)] leading-relaxed">
+              Building EYLA as a long-term personal project while continuing to
+              deepen my backend engineering skills. Open to roles where I can work
+              on real systems, learn from strong engineers, and contribute to
+              codebases meant to last.
             </p>
           </div>
         </div>
