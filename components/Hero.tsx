@@ -265,14 +265,13 @@ export function Hero() {
                       >
                         Let&apos;s build together
                       </button>
-                      {/* Disabled CV Button */}
-                      <button
-                        disabled
-                        className="px-6 py-3 rounded-full border border-[var(--color-border)] text-[var(--color-muted)] text-[var(--font-size-sm)] font-medium cursor-not-allowed opacity-60"
-                      >
+                      {/* CV Button */}
+                      <a href="/cv/CV-Kevin-Jan2026.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-6 py-3 rounded-full border border-[var(--color-border)] text-[var(--color-fg)] text-[var(--font-size-sm)] font-medium hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-200" >
                         Download CV
-                        <span className="text-[var(--font-size-xs)] ml-2 opacity-70">Soon</span>
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </AnimateOnScroll>
