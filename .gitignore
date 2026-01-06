@@ -40,3 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .claude/settings.local.json
+
+.nul # Ignore file for Claude AI settings
+.claude/settings.json # Ignore file for Claude AI settings  
