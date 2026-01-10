@@ -1,17 +1,31 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Container } from "./Container";
-import { AnimateOnScroll } from "./AnimateOnScroll";
+import { StaggerContainer, StaggerItem } from "./motion";
+import { useMotion } from "./motion";
 import { ArrowRightIcon } from "./Icons";
 
 export function HighlightsSection() {
+  const { shouldReduceMotion } = useMotion();
+
   return (
     <section className="py-[var(--space-2xl)]">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[var(--space-md)]">
+        <StaggerContainer
+          staggerDelay={0.15}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-[var(--space-md)]"
+        >
           {/* Card 1 - Accent background */}
-          <AnimateOnScroll>
-            <div
-              className="bg-[var(--color-accent)] rounded-2xl p-[var(--space-xl)] flex flex-col justify-between min-h-[320px] hover-scale"
+          <StaggerItem>
+            <motion.div
+              className="bg-[var(--color-accent)] rounded-2xl p-[var(--space-xl)] flex flex-col justify-between min-h-[320px]"
               style={{ boxShadow: "var(--shadow-elevated)" }}
+              whileHover={
+                shouldReduceMotion
+                  ? {}
+                  : { scale: 1.02, transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] } }
+              }
             >
               <div>
                 <p className="text-[var(--color-accent-text)] text-[var(--font-size-sm)] mb-[var(--space-sm)] opacity-80">
@@ -27,19 +41,30 @@ export function HighlightsSection() {
                 <p className="text-[var(--color-accent-text)] text-[var(--font-size-sm)] max-w-[70%] opacity-90">
                   Placeholder text about development philosophy and approach.
                 </p>
-                {/* Arrow indicator */}
-                <div className="w-12 h-12 rounded-full bg-[var(--color-bg)] flex items-center justify-center">
+                <motion.div
+                  className="w-12 h-12 rounded-full bg-[var(--color-bg)] flex items-center justify-center"
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.1, rotate: -10 }}
+                >
                   <ArrowRightIcon className="text-[var(--color-accent)]" size={20} />
-                </div>
+                </motion.div>
               </div>
-            </div>
-          </AnimateOnScroll>
+            </motion.div>
+          </StaggerItem>
 
           {/* Card 2 - Surface background */}
-          <AnimateOnScroll delay={100}>
-            <div
-              className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-[var(--space-xl)] flex flex-col justify-between min-h-[320px] hover-scale hover:border-[var(--color-accent)]/30"
+          <StaggerItem>
+            <motion.div
+              className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-[var(--space-xl)] flex flex-col justify-between min-h-[320px]"
               style={{ boxShadow: "var(--shadow-soft)" }}
+              whileHover={
+                shouldReduceMotion
+                  ? {}
+                  : {
+                      scale: 1.02,
+                      borderColor: "rgba(124, 58, 237, 0.3)",
+                      transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] },
+                    }
+              }
             >
               <div>
                 <p className="text-[var(--color-muted-light)] text-[var(--font-size-sm)] mb-[var(--space-sm)]">
@@ -62,14 +87,16 @@ export function HighlightsSection() {
                     </span>
                   ))}
                 </div>
-                {/* Arrow indicator */}
-                <div className="w-12 h-12 rounded-full bg-[var(--color-accent-secondary)] flex items-center justify-center flex-shrink-0 ml-[var(--space-sm)]">
+                <motion.div
+                  className="w-12 h-12 rounded-full bg-[var(--color-accent-secondary)] flex items-center justify-center flex-shrink-0 ml-[var(--space-sm)]"
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.1, rotate: -10 }}
+                >
                   <ArrowRightIcon className="text-[var(--color-bg)]" size={20} />
-                </div>
+                </motion.div>
               </div>
-            </div>
-          </AnimateOnScroll>
-        </div>
+            </motion.div>
+          </StaggerItem>
+        </StaggerContainer>
       </Container>
     </section>
   );

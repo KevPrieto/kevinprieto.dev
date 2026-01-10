@@ -1,8 +1,11 @@
-import { Section } from "./Section";
-import { AnimateOnScroll } from "./AnimateOnScroll";
-import Image from "next/image";
+"use client";
 
-// Tool logo paths mapping
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { Section } from "./Section";
+import { Reveal, StaggerContainer, StaggerItem } from "./motion";
+import { useMotion } from "./motion";
+
 const logos: Record<string, string> = {
   java: "/logos/java.svg",
   maven: "/logos/maven.svg",
@@ -30,7 +33,6 @@ const logos: Record<string, string> = {
   claude: "/logos/claude.svg",
 };
 
-// Tool categories with visual hierarchy
 const toolCategories = {
   primary: {
     label: "Core Backend & JVM",
@@ -119,6 +121,7 @@ interface ToolItemProps {
 }
 
 function ToolItem({ name, logo, size = "md" }: ToolItemProps) {
+  const { shouldReduceMotion } = useMotion();
   const containerSizes = {
     lg: "w-16 h-16",
     md: "w-12 h-12",
@@ -134,10 +137,22 @@ function ToolItem({ name, logo, size = "md" }: ToolItemProps) {
   const logoSrc = logos[logo];
 
   return (
-    <div className="group flex flex-col items-center gap-3">
-      <div
-        className={`${containerSizes[size]} rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] flex items-center justify-center group-hover:border-[var(--color-accent)]/40 group-hover:bg-[var(--color-surface)] transition-all duration-200`}
+    <motion.div
+      className="group flex flex-col items-center gap-3"
+      whileHover={shouldReduceMotion ? {} : { y: -2, transition: { duration: 0.2 } }}
+    >
+      <motion.div
+        className={`${containerSizes[size]} rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] flex items-center justify-center transition-colors duration-200`}
         style={{ boxShadow: "var(--shadow-soft)" }}
+        whileHover={
+          shouldReduceMotion
+            ? {}
+            : {
+                borderColor: "rgba(124, 58, 237, 0.4)",
+                backgroundColor: "var(--color-surface)",
+                transition: { duration: 0.2 },
+              }
+        }
       >
         {logoSrc && (
           <Image
@@ -148,11 +163,11 @@ function ToolItem({ name, logo, size = "md" }: ToolItemProps) {
             className="object-contain"
           />
         )}
-      </div>
+      </motion.div>
       <span className="text-[var(--font-size-xs)] text-[var(--color-muted-light)] text-center leading-tight max-w-[80px]">
         {name}
       </span>
-    </div>
+    </motion.div>
   );
 }
 
@@ -182,20 +197,22 @@ function CategoryGroup({ label, tools, variant = "standard" }: CategoryGroupProp
       >
         {label}
       </p>
-      <div
+      <StaggerContainer
+        staggerDelay={0.05}
         className={`flex flex-wrap ${
           isPrimary ? "gap-[var(--space-xl)] justify-center md:justify-start" : "gap-[var(--space-lg)]"
         }`}
       >
         {tools.map((tool, index) => (
-          <ToolItem
-            key={`${tool.logo}-${index}`}
-            name={tool.name}
-            logo={tool.logo}
-            size={isPrimary ? "lg" : isAuxiliary ? "sm" : "md"}
-          />
+          <StaggerItem key={`${tool.logo}-${index}`}>
+            <ToolItem
+              name={tool.name}
+              logo={tool.logo}
+              size={isPrimary ? "lg" : isAuxiliary ? "sm" : "md"}
+            />
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerContainer>
     </div>
   );
 }
@@ -204,19 +221,22 @@ export function ToolsSection() {
   return (
     <Section id="tools" title="Tools" subtitle="Technologies and platforms I work with">
       <div className="space-y-[var(--space-2xl)]">
-        {/* Primary Category - Core Backend & JVM (Full Width, Prominent) */}
-        <AnimateOnScroll>
+        {/* Primary Category - Core Backend & JVM */}
+        <Reveal>
           <CategoryGroup
             label={toolCategories.primary.label}
             tools={toolCategories.primary.tools}
             variant="primary"
           />
-        </AnimateOnScroll>
+        </Reveal>
 
         {/* Standard Categories - Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[var(--space-2xl)] gap-y-[var(--space-xl)]">
-          {toolCategories.standard.map((category, index) => (
-            <AnimateOnScroll key={category.label} delay={index * 50}>
+        <StaggerContainer
+          staggerDelay={0.1}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-[var(--space-2xl)] gap-y-[var(--space-xl)]"
+        >
+          {toolCategories.standard.map((category) => (
+            <StaggerItem key={category.label}>
               <div className="min-h-[120px]">
                 <CategoryGroup
                   label={category.label}
@@ -224,25 +244,28 @@ export function ToolsSection() {
                   variant="standard"
                 />
               </div>
-            </AnimateOnScroll>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* Supporting Categories */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[var(--space-2xl)] gap-y-[var(--space-xl)]">
-          {toolCategories.supporting.map((category, index) => (
-            <AnimateOnScroll key={category.label} delay={index * 50}>
+        <StaggerContainer
+          staggerDelay={0.1}
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-[var(--space-2xl)] gap-y-[var(--space-xl)]"
+        >
+          {toolCategories.supporting.map((category) => (
+            <StaggerItem key={category.label}>
               <CategoryGroup
                 label={category.label}
                 tools={category.tools}
                 variant="supporting"
               />
-            </AnimateOnScroll>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
-        {/* Auxiliary Category - AI Tools (Subdued, Last) */}
-        <AnimateOnScroll delay={100}>
+        {/* Auxiliary Category - AI Tools */}
+        <Reveal delay={0.1}>
           <div className="pt-[var(--space-lg)] border-t border-[var(--color-border)]/50">
             <CategoryGroup
               label={toolCategories.auxiliary.label}
@@ -250,7 +273,7 @@ export function ToolsSection() {
               variant="auxiliary"
             />
           </div>
-        </AnimateOnScroll>
+        </Reveal>
       </div>
     </Section>
   );
