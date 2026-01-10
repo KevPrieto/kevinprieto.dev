@@ -1,5 +1,9 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Section } from "./Section";
-import { AnimateOnScroll } from "./AnimateOnScroll";
+import { Reveal, StaggerContainer, StaggerItem } from "./motion";
+import { useMotion } from "./motion";
 
 type Project = {
   id: number;
@@ -43,21 +47,33 @@ const secondaryProjects: Project[] = [
 
 function ProjectCard({ project }: { project: Project }) {
   const isBanner = project.imageType === "banner";
+  const { shouldReduceMotion } = useMotion();
 
   return (
-    <article
-      className="group bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-[var(--space-lg)] flex flex-col hover-lift hover:border-[var(--color-accent)]/30"
+    <motion.article
+      className="group bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-[var(--space-lg)] flex flex-col"
       style={{ boxShadow: "var(--shadow-soft)" }}
+      whileHover={
+        shouldReduceMotion
+          ? {}
+          : {
+              y: -4,
+              boxShadow: "var(--shadow-elevated)",
+              borderColor: "rgba(124, 58, 237, 0.3)",
+              transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] },
+            }
+      }
     >
       {/* Project visual */}
-      <div
+      <motion.div
         className={`mb-[var(--space-md)] rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-2)] overflow-hidden
-          ${
-            isBanner
-              ? "aspect-video"
-              : "aspect-square flex items-center justify-center p-4"
-          }
+          ${isBanner ? "aspect-video" : "aspect-square flex items-center justify-center"}
         `}
+        whileHover={
+          shouldReduceMotion
+            ? {}
+            : { scale: 1.02, transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] } }
+        }
       >
         <img
           src={project.image}
@@ -65,10 +81,10 @@ function ProjectCard({ project }: { project: Project }) {
           className={
             isBanner
               ? "w-full h-full object-cover"
-              : "w-56 h-56 md:w-60 md:h-60 object-contain"
+              : "w-full h-full object-contain p-4"
           }
         />
-      </div>
+      </motion.div>
 
       <h3 className="text-[var(--font-size-xl)] font-bold mb-[var(--space-xs)]">
         {project.title}
@@ -88,7 +104,7 @@ function ProjectCard({ project }: { project: Project }) {
           </span>
         ))}
       </div>
-    </article>
+    </motion.article>
   );
 }
 
@@ -97,18 +113,21 @@ export function ProjectsSection() {
     <Section id="projects" title="Projects" subtitle="Selected work and experiments">
       <div className="flex flex-col gap-[var(--space-lg)]">
         {/* Row 1: EYLA (full width, banner fills container) */}
-        <AnimateOnScroll>
+        <Reveal>
           <ProjectCard project={eyla} />
-        </AnimateOnScroll>
+        </Reveal>
 
         {/* Row 2: Secondary projects */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[var(--space-md)]">
-          {secondaryProjects.map((project, index) => (
-            <AnimateOnScroll key={project.id} delay={(index + 1) * 100}>
+        <StaggerContainer
+          staggerDelay={0.15}
+          className="grid grid-cols-1 md:grid-cols-2 gap-[var(--space-md)]"
+        >
+          {secondaryProjects.map((project) => (
+            <StaggerItem key={project.id}>
               <ProjectCard project={project} />
-            </AnimateOnScroll>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </Section>
   );
