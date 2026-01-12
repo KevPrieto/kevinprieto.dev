@@ -55,7 +55,8 @@ export function Header() {
       className="fixed top-0 left-0 right-0 z-50 py-3 backdrop-blur-xl border-b animate-navbar-enter transition-all duration-300"
       style={{
         backgroundColor: `color-mix(in srgb, var(--color-bg) ${parseFloat(getBackgroundOpacity()) * 100}%, transparent)`,
-        borderColor: `color-mix(in srgb, var(--color-border) 50%, transparent)`,
+        borderColor: `color-mix(in srgb, var(--color-border) 60%, transparent)`,
+        boxShadow: isScrolled ? 'var(--shadow-soft)' : 'none',
       }}
     >
       <Container>

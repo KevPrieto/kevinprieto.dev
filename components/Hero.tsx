@@ -93,7 +93,7 @@ export function Hero() {
         }
       `}</style>
 
-      <section className="min-h-[90vh] flex flex-col py-[var(--space-xl)] pt-[calc(var(--space-xl)+4rem)]">
+      <section className="min-h-screen flex flex-col py-[var(--space-xl)] pt-[calc(var(--space-xl)+4rem)]">
         <Container>
           {/* Status Indicator */}
           <Reveal direction="down" delay={0}>
@@ -139,7 +139,7 @@ export function Hero() {
               {/* Text Column */}
               <div className="flex-1 lg:max-w-[55%] order-2 lg:order-1">
                 <Reveal delay={0.1}>
-                  <h1 className="text-[clamp(2.5rem,8vw,5rem)] font-bold leading-[1.05] tracking-tight mb-[var(--space-md)]">
+                  <h1 className="text-[clamp(3rem,9vw,6rem)] font-bold leading-[1.05] tracking-tight mb-[var(--space-lg)]">
                     Building systems.
                     <br />
                     Driving{" "}
