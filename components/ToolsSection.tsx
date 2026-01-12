@@ -34,6 +34,9 @@ const logos: Record<string, string> = {
   vercel: "/logos/vercel.svg",
   "android-studio": "/logos/android-studio.svg",
   unity: "/logos/unity.svg",
+  "github-copilot": "/logos/github-copilot.svg",
+  cursor: "/logos/cursor.svg",
+  opencode: "/logos/opencode.svg",
 };
 
 const toolCategories = {
@@ -121,6 +124,9 @@ const toolCategories = {
     tools: [
       { name: "ChatGPT Pro", logo: "openai" },
       { name: "Claude Pro", logo: "claude" },
+      { name: "GitHub Copilot", logo: "github-copilot" },
+      { name: "Cursor", logo: "cursor" },
+      { name: "OpenCode", logo: "opencode" },
     ],
   },
 };
@@ -159,8 +165,9 @@ function ToolItem({ name, logo, size = "md" }: ToolItemProps) {
           shouldReduceMotion
             ? {}
             : {
-                borderColor: "rgba(124, 58, 237, 0.4)",
+                borderColor: "var(--color-border)",
                 backgroundColor: "var(--color-surface)",
+                boxShadow: "var(--shadow-elevated)",
                 transition: { duration: 0.2 },
               }
         }

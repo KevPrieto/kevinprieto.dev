@@ -1,15 +1,22 @@
 "use client";
 
 import { Container } from "./Container";
-import { Reveal } from "./motion";
+import { Reveal, StaggerContainer, StaggerItem } from "./motion";
 
 export function WhatIDoSection() {
+  const statements = [
+    "I create applications that solve problems.",
+    "I build websites that ship on time.",
+    "I design systems with clarity and intent.",
+    "I turn concepts into working products.",
+  ];
+
   return (
     <section className="py-[var(--space-3xl)]">
       <Container>
         <div className="max-w-[42rem] mx-auto text-center">
           <Reveal delay={0.1}>
-            <h2 className="text-[var(--font-size-4xl)] font-bold mb-[var(--space-xl)] tracking-tight">
+            <h2 className="text-[var(--font-size-4xl)] font-bold mb-[var(--space-xl)] tracking-tight text-[var(--color-fg)]">
               What I do
             </h2>
           </Reveal>
@@ -20,14 +27,18 @@ export function WhatIDoSection() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.3}>
-            <div className="space-y-[var(--space-md)] text-[var(--font-size-lg)] text-[var(--color-muted-light)] leading-[1.8]">
-              <p>I create applications that solve problems.</p>
-              <p>I build websites that ship on time.</p>
-              <p>I design systems with clarity and intent.</p>
-              <p>I turn concepts into working products.</p>
-            </div>
-          </Reveal>
+          <StaggerContainer
+            staggerDelay={0.15}
+            className="space-y-[var(--space-md)]"
+          >
+            {statements.map((statement, index) => (
+              <StaggerItem key={index}>
+                <p className="text-[var(--font-size-lg)] text-[var(--color-muted-light)] leading-[1.8]">
+                  {statement}
+                </p>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
         </div>
       </Container>
     </section>

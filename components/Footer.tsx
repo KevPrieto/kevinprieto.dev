@@ -7,6 +7,7 @@ import {
   GitHubIcon,
   LinkedInIcon,
   XIcon,
+  InstagramIcon,
 } from "./Icons";
 
 const navLinks = [
@@ -20,6 +21,7 @@ const socialLinks = [
   { href: "https://github.com/KevPrieto", label: "GitHub", icon: GitHubIcon },
   { href: "https://www.linkedin.com/in/kevin-prieto-developer/", label: "LinkedIn", icon: LinkedInIcon },
   { href: "https://x.com/bykevin12", label: "Twitter", icon: XIcon },
+  { href: "https://www.instagram.com/kevprs/", label: "Instagram", icon: InstagramIcon },
 ];
 
 export function Footer() {
