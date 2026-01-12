@@ -9,10 +9,10 @@ interface SectionProps {
 
 export function Section({ id, title, subtitle, children }: SectionProps) {
   return (
-    <section id={id} className="py-[var(--space-2xl)] relative">
+    <section id={id} className="py-[var(--space-3xl)] relative">
       <Container>
-        <div className="mb-[var(--space-xl)]">
-          <h2 className="text-[var(--font-size-4xl)] font-bold mb-[var(--space-sm)] tracking-tight">
+        <div className="mb-[var(--space-xl)] text-center">
+          <h2 className="text-[var(--font-size-4xl)] font-bold mb-[var(--space-sm)] tracking-tight text-[var(--color-fg)]">
             {title}
           </h2>
           {subtitle && (
