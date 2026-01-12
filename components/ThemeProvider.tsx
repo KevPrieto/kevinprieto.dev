@@ -24,7 +24,7 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -38,11 +38,8 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
       return;
     }
 
-    // Fall back to system preference
-    const systemPrefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-    const initialTheme = systemPrefersDark ? "dark" : "light";
+    // Default to light mode (no system preference fallback)
+    const initialTheme = "light";
     setTheme(initialTheme);
     document.documentElement.setAttribute("data-theme", initialTheme);
   }, []);
@@ -75,7 +72,7 @@ export const themeScript = `
   (function() {
     var theme = localStorage.getItem('theme');
     if (!theme) {
-      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      theme = 'light';
     }
     document.documentElement.setAttribute('data-theme', theme);
   })();
