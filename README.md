@@ -1,6 +1,6 @@
 # This is my personal website.
 
-<img width="1146" height="879" alt="image" src="https://github.com/user-attachments/assets/fc3de048-9273-4f0e-ab81-9eac06726aa2" />
+<img width="946" height="857" alt="image" src="https://github.com/user-attachments/assets/4b53bbe5-df09-4139-8473-cbb6a86e5d18" />
 
 The site is meant to be a clear and honest snapshot of who I am as a developer:
 how I think, what I build, and the kind of systems I enjoy working on.
