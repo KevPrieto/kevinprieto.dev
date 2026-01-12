@@ -31,6 +31,9 @@ const logos: Record<string, string> = {
   postman: "/logos/postman.svg",
   openai: "/logos/openai.svg",
   claude: "/logos/claude.svg",
+  vercel: "/logos/vercel.svg",
+  "android-studio": "/logos/android-studio.svg",
+  unity: "/logos/unity.svg",
 };
 
 const toolCategories = {
@@ -49,6 +52,7 @@ const toolCategories = {
         { name: "Next.js", logo: "nextjs" },
         { name: "React", logo: "react" },
         { name: "TypeScript", logo: "typescript" },
+        { name: "Vercel", logo: "vercel" },
       ],
     },
     {
@@ -69,6 +73,13 @@ const toolCategories = {
         { name: "C#", logo: "csharp" },
         { name: "Kotlin", logo: "kotlin" },
         { name: "Swift", logo: "swift" },
+      ],
+    },
+    {
+      label: "Development Environments",
+      tools: [
+        { name: "Android Studio", logo: "android-studio" },
+        { name: "Unity", logo: "unity" },
       ],
     },
     {

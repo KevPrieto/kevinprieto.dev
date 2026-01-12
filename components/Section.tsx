@@ -9,14 +9,14 @@ interface SectionProps {
 
 export function Section({ id, title, subtitle, children }: SectionProps) {
   return (
-    <section id={id} className="py-[var(--space-2xl)]">
+    <section id={id} className="py-[var(--space-2xl)] relative">
       <Container>
         <div className="mb-[var(--space-xl)]">
-          <h2 className="text-[var(--font-size-4xl)] font-bold mb-[var(--space-xs)]">
+          <h2 className="text-[var(--font-size-4xl)] font-bold mb-[var(--space-sm)] tracking-tight">
             {title}
           </h2>
           {subtitle && (
-            <p className="text-[var(--font-size-lg)] text-[var(--color-muted-light)]">
+            <p className="text-[var(--font-size-xl)] text-[var(--color-muted-light)] font-light">
               {subtitle}
             </p>
           )}
