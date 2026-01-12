@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { Container } from "./Container";
 import { useTheme } from "./ThemeProvider";
 import {
@@ -21,7 +21,11 @@ const navItems = [
   { href: "#contact", label: "Contact", icon: ContactIcon },
 ];
 
-export function Header() {
+interface HeaderProps {
+  onGetInTouchClick?: () => void;
+}
+
+export function Header({ onGetInTouchClick }: HeaderProps = {}) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollDirection, setScrollDirection] = useState<"up" | "down">("up");
   const lastScrollY = useRef(0);
@@ -60,8 +64,17 @@ export function Header() {
       }}
     >
       <Container>
-        <nav className="flex items-center justify-center">
-          <div className="flex items-center gap-1">
+        <nav className="flex items-center justify-between">
+          {/* Get in touch link */}
+          <button
+            onClick={onGetInTouchClick}
+            className="text-[var(--font-size-sm)] text-[var(--color-muted)] hover:text-[var(--color-accent)] transition-colors duration-200 font-medium"
+          >
+            Get in touch
+          </button>
+
+          {/* Center nav + theme toggle */}
+          <div className="flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
             <ul className="flex items-center gap-1">
               {navItems.map((item) => {
                 const Icon = item.icon;
