@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Section } from "./Section";
+import { Container } from "./Container";
 import { Reveal } from "./motion";
 import { useMotion } from "./motion";
 
@@ -52,10 +52,19 @@ export function ContactSection() {
   };
 
   return (
-    <Section id="contact" title="Or send a message" subtitle="">
-      <div className="max-w-[32rem] mx-auto">
-        <Reveal>
-          <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-[var(--space-xl)]" style={{ boxShadow: "var(--shadow-soft)" }}>
+    <section id="contact" className="py-[var(--space-3xl)] relative">
+      <Container>
+        <div className="max-w-[42rem] mx-auto text-center">
+          <Reveal delay={0.1}>
+            <h2 className="text-[var(--font-size-4xl)] font-bold mb-[var(--space-xl)] tracking-tight text-[var(--color-fg)]">
+              Or send a message
+            </h2>
+          </Reveal>
+        </div>
+
+        <div className="max-w-[32rem] mx-auto">
+          <Reveal delay={0.2}>
+            <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-[var(--space-xl)]" style={{ boxShadow: "var(--shadow-soft)" }}>
 
               {/* Success Message */}
               <AnimatePresence>
@@ -172,6 +181,7 @@ export function ContactSection() {
             </div>
           </Reveal>
         </div>
-      </Section>
-    );
-  }
+      </Container>
+    </section>
+  );
+}
