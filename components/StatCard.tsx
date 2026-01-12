@@ -4,19 +4,13 @@ interface StatCardProps {
   variant?: "primary" | "secondary";
 }
 
-export function StatCard({ value, label, variant = "primary" }: StatCardProps) {
-  const styles = variant === "primary"
-    ? "glass-button"
-    : "glass border-white/30";
-
+export function StatCard({ value, label }: StatCardProps) {
   return (
-    <div
-      className={`${styles} rounded-xl px-[var(--space-md)] py-[var(--space-sm)] inline-flex flex-col hover-scale text-white`}
-    >
-      <span className="text-[var(--font-size-2xl)] font-bold leading-none">
+    <div className="glass rounded-xl px-[var(--space-md)] py-[var(--space-sm)] inline-flex flex-col hover-scale">
+      <span className="text-[var(--font-size-2xl)] font-bold leading-none text-[var(--color-fg)]">
         {value}
       </span>
-      <span className="text-[var(--font-size-sm)] mt-1 opacity-90">
+      <span className="text-[var(--font-size-sm)] mt-1 text-[var(--color-muted-light)]">
         {label}
       </span>
     </div>

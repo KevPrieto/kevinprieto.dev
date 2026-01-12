@@ -61,9 +61,8 @@ function ProjectCard({ project }: { project: Project }) {
         shouldReduceMotion
           ? {}
           : {
-              y: -6,
+              y: -4,
               boxShadow: "var(--shadow-elevated)",
-              borderColor: "rgba(124, 58, 237, 0.4)",
               transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] },
             }
       }

@@ -3,17 +3,10 @@
 import { useState, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Section } from "./Section";
-import { Reveal, StaggerContainer, StaggerItem } from "./motion";
+import { Reveal } from "./motion";
 import { useMotion } from "./motion";
-import { GitHubIcon, LinkedInIcon, XIcon } from "./Icons";
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
-
-const socialPlatforms = [
-  { name: "GitHub", handle: "@KevPrieto", icon: GitHubIcon, href: "https://github.com/KevPrieto" },
-  { name: "LinkedIn", handle: "kevin-prieto-developer", icon: LinkedInIcon, href: "https://www.linkedin.com/in/kevin-prieto-developer/" },
-  { name: "X", handle: "@ByKevin12", icon: XIcon, href: "https://x.com/ByKevin12" },
-];
 
 export function ContactSection() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -59,18 +52,10 @@ export function ContactSection() {
   };
 
   return (
-    <Section id="contact" title="Contact" subtitle="Get in touch">
-      <div className="max-w-[1280px] mx-auto px-[var(--space-md)]">
-        <div className="grid grid-cols-1 lg:grid-cols-[4fr_3fr] gap-[var(--space-xl)] lg:gap-[var(--space-2xl)]">
-          {/* Contact Form */}
-          <Reveal direction="left">
-            <motion.div
-              className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-[var(--space-xl)] lg:p-[var(--space-2xl)]"
-              style={{ boxShadow: "var(--shadow-soft)" }}
-            >
-              <h3 className="text-[var(--font-size-2xl)] font-bold mb-[var(--space-lg)]">
-                Send a message
-              </h3>
+    <Section id="contact" title="Or send a message" subtitle="">
+      <div className="max-w-[32rem] mx-auto">
+        <Reveal>
+          <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-[var(--space-xl)]" style={{ boxShadow: "var(--shadow-soft)" }}>
 
               {/* Success Message */}
               <AnimatePresence>
@@ -167,9 +152,9 @@ export function ContactSection() {
                 <motion.button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="glass-button w-full text-white font-bold py-3.5 px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                  whileHover={shouldReduceMotion ? {} : { scale: 1.02 }}
-                  whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
+                  className="w-full bg-[var(--color-fg)] text-[var(--color-bg)] font-medium py-3 px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[var(--color-accent)] transition-colors duration-200"
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.01 }}
+                  whileTap={shouldReduceMotion ? {} : { scale: 0.99 }}
                 >
                   {status === 'loading' ? (
                     <span className="flex items-center justify-center gap-2">
@@ -184,47 +169,9 @@ export function ContactSection() {
                   )}
                 </motion.button>
               </form>
-            </motion.div>
-          </Reveal>
-
-          {/* Contact Info */}
-          <Reveal direction="right" delay={0.1}>
-            <StaggerContainer staggerDelay={0.1} className="space-y-3">
-              {socialPlatforms.map((platform) => {
-                const Icon = platform.icon;
-                return (
-                  <StaggerItem key={platform.name}>
-                    <motion.a
-                      href={platform.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-[var(--space-md)] transition-colors duration-200"
-                      style={{ boxShadow: "var(--shadow-soft)" }}
-                      whileHover={
-                        shouldReduceMotion
-                          ? {}
-                          : {
-                              y: -2,
-                              borderColor: "rgba(124, 58, 237, 0.4)",
-                              transition: { duration: 0.2 },
-                            }
-                      }
-                    >
-                      <div className="flex items-center gap-3">
-                        <Icon size={20} className="text-[var(--color-muted-light)]" />
-                        <span className="text-[var(--font-size-sm)] font-medium">{platform.name}</span>
-                      </div>
-                      <span className="text-[var(--color-muted-light)] text-[var(--font-size-xs)]">
-                        {platform.handle}
-                      </span>
-                    </motion.a>
-                  </StaggerItem>
-                );
-              })}
-            </StaggerContainer>
+            </div>
           </Reveal>
         </div>
-      </div>
-    </Section>
-  );
-}
+      </Section>
+    );
+  }
