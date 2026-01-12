@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { ClientLayout } from "@/components/ClientLayout";
 import { ThemeProvider, themeScript } from "@/components/ThemeProvider";
 import { MotionProvider } from "@/components/motion";
 import "./globals.css";
@@ -35,9 +34,7 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <MotionProvider>
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
+            <ClientLayout>{children}</ClientLayout>
           </MotionProvider>
         </ThemeProvider>
       </body>
