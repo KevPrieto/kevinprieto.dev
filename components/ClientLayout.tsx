@@ -23,7 +23,7 @@ export function ClientLayout({ children }: ClientLayoutProps) {
 
   return (
     <>
-      <Header onGetInTouchClick={openCalendly} />
+      <Header />
       <main className="flex-1">{children}</main>
       <Footer />
       <FloatingCTA onClick={openCalendly} />
