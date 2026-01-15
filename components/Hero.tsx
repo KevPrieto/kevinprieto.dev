@@ -83,7 +83,7 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: -20 }}
                 transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-                className="text-[var(--font-size-4xl)] lg:text-[var(--font-size-5xl)] text-[var(--color-muted-light)] font-medium"
+                className="text-[clamp(1.25rem,3vw,2rem)] text-[var(--color-muted-light)] font-medium"
               >
                 {greetings[greetingIndex]}
               </motion.p>
@@ -96,14 +96,14 @@ export function Hero() {
               {/* Text Column */}
               <div className="flex-1 lg:max-w-[55%] order-2 lg:order-1">
                 <Reveal delay={0.1}>
-                  <h1 className="text-[clamp(3rem,9vw,6rem)] font-bold leading-[1.05] tracking-tight mb-[var(--space-xl)]">
+                  <h1 className="text-[clamp(3.5rem,10vw,6.5rem)] font-extrabold leading-[0.9] tracking-tighter mb-[var(--space-xl)]">
                     Building systems.
                     <br />
                     Driving direction.
                   </h1>
                 </Reveal>
                 <Reveal delay={0.2}>
-                  <p className="text-[var(--font-size-lg)] text-[var(--color-muted-light)] leading-relaxed max-w-[28rem] mb-[var(--space-xl)]">
+                  <p className="text-[clamp(1.25rem,2.5vw,1.75rem)] text-[var(--color-muted-light)] leading-relaxed max-w-[28rem] mb-[var(--space-xl)]">
                     Software engineer focused on backend systems, web applications, and automation. I ship working products.
                   </p>
                 </Reveal>

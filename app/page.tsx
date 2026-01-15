@@ -1,5 +1,4 @@
 import { Hero } from "@/components/Hero";
-import { TypographyBlock } from "@/components/TypographyBlock";
 import { WhatIDoSection } from "@/components/WhatIDoSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ToolsSection } from "@/components/ToolsSection";
@@ -10,7 +9,6 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <TypographyBlock />
       <WhatIDoSection />
       <ProjectsSection />
       <ToolsSection />

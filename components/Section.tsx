@@ -12,7 +12,7 @@ export function Section({ id, title, subtitle, children }: SectionProps) {
     <section id={id} className="py-[var(--space-3xl)] relative">
       <Container>
         <div className="mb-[var(--space-xl)] text-center">
-          <h2 className="text-[var(--font-size-4xl)] font-bold mb-[var(--space-sm)] tracking-tight text-[var(--color-fg)]">
+          <h2 className="text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold mb-[var(--space-sm)] tracking-tighter text-[var(--color-fg)]">
             {title}
           </h2>
           {subtitle && (
