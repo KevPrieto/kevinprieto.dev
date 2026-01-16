@@ -11,33 +11,32 @@ export function FloatingCTA() {
       href="https://calendly.com/kgps1003/30min"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-8 right-8 md:bottom-10 md:right-10 z-50 group relative px-8 py-4 rounded-full bg-[var(--color-fg)] text-[var(--color-bg)] font-semibold text-[var(--font-size-lg)] border-2 border-[var(--color-accent)] inline-flex items-center gap-3 overflow-hidden"
-      style={{ boxShadow: "var(--shadow-elevated)" }}
-      initial={shouldReduceMotion ? {} : { opacity: 0, y: 30, scale: 0.9 }}
+      className="glass fixed top-20 right-6 md:top-24 md:right-10 z-40 group relative px-8 py-4 rounded-full text-[var(--color-fg)] font-semibold text-[var(--font-size-base)] inline-flex items-center gap-3 overflow-hidden transition-all duration-300"
+      style={{
+        boxShadow: "0 8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
+      }}
+      initial={shouldReduceMotion ? {} : { opacity: 0, y: -20, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.6, delay: 1, ease: [0.25, 0.1, 0.25, 1] }}
+      transition={{ duration: 0.6, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
       whileHover={
         shouldReduceMotion
           ? {}
           : {
-              y: -4,
-              scale: 1.02,
-              boxShadow: "0 8px 20px rgba(0, 122, 255, 0.3)",
+              y: -6,
+              scale: 1.05,
+              boxShadow: "0 16px 48px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.3)",
               transition: { duration: 0.3 },
             }
       }
-      whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
+      whileTap={shouldReduceMotion ? {} : { scale: 0.97 }}
       aria-label="Get in touch via Calendly"
     >
       {/* iOS-style shine effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out pointer-events-none" />
-      
-      {/* Inner glow effect */}
-      <div className="absolute inset-0 rounded-full bg-[var(--color-accent)] opacity-0 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none" />
-      
-      {/* Border glow effect */}
-      <div className="absolute inset-0 rounded-full border-2 border-[var(--color-accent)] opacity-50 group-hover:opacity-100 transition-opacity duration-300 animate-pulse pointer-events-none" />
-      
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out pointer-events-none" />
+
+      {/* Inner glow highlight */}
+      <div className="absolute inset-0 rounded-full bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
+
       {/* Button content */}
       <span className="relative z-10">Get in touch</span>
       <svg
