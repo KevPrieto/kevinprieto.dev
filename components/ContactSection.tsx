@@ -66,7 +66,7 @@ export function ContactSection() {
 
         <div className="max-w-[32rem] mx-auto">
           <Reveal delay={0.2}>
-            <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-[var(--space-xl)]" style={{ boxShadow: "var(--shadow-soft)" }}>
+            <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-6 sm:p-[var(--space-xl)]" style={{ boxShadow: "var(--shadow-soft)" }}>
 
               {/* Success Message */}
               <AnimatePresence>
