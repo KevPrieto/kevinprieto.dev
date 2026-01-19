@@ -40,8 +40,8 @@ export function FloatingCTA() {
       {/* Button content */}
       <span className="relative z-10">Get in touch</span>
       <svg
-        width="20"
-        height="20"
+        width="18"
+        height="18"
         viewBox="0 0 20 20"
         fill="none"
         className="relative z-10 transition-transform duration-200 group-hover:translate-x-1"
