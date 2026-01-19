@@ -81,23 +81,25 @@
 ### About / Bio Section
 
 ### 16. [x] Redesign About/Bio section layout
-- Increased video container: 360px → 420px → 520px (responsive)
-- Enhanced shadow depth (24px 80px)
-- Added loading skeleton placeholder
+- Increased video container: 360px (responsive)
+- Added cinematic horizontal image (21:9)
+- Removed "fake glass" artifacts and heavy shadows
+- Cleaned up grid layout (text + video row, image row)
 
 ### 17. [x] Fix video rendering issues (CRITICAL)
 **Acceptance Criteria:**
-- [x] Video appears **large** (520px on desktop, 360px on mobile)
+- [x] Video appears **large** (360px desktop)
 - [x] Video respects vertical 9:16 orientation
 - [x] No unintended cropping (`object-top` applied)
 - [x] Correct `object-fit: cover` and `object-position: top`
 - [x] No CLS (skeleton placeholder during load)
 - [x] Responsive behavior with `max-w-*` utilities
-- [x] Premium shadow and hover depth effect
+- [x] **No black borders or fake frames** (Verified)
+- [x] **No pixelation** (Sized correctly for resolution)
 
 ### 18. [x] Validate video responsive behavior
-- Desktop: 520px, bold, clear, premium ✓
-- Mobile: 360px, scales gracefully ✓
+- Desktop: bold, clear, premium ✓
+- Mobile: scales gracefully ✓
 
 ---
 
