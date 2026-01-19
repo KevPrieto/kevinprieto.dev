@@ -17,7 +17,42 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kevin Prieto",
+  title: {
+    default: "Kevin Prieto",
+    template: "%s | Kevin Prieto",
+  },
+  description: "Software engineer focused on backend systems, web applications, and automation. Building high-quality digital experiences.",
+  keywords: ["Software Engineer", "Backend", "Frontend", "Full Stack", "System Design", "Kevin Prieto"],
+  authors: [{ name: "Kevin Prieto", url: "https://kevprieto.com" }],
+  creator: "Kevin Prieto",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://kevprieto.com",
+    title: "Kevin Prieto - Software Engineer",
+    description: "Software engineer focused on backend systems, web applications, and automation. Building high-quality digital experiences.",
+    siteName: "Kevin Prieto",
+    images: [
+      {
+        url: "/og-image.png", // We should ensure this exists or use a default
+        width: 1200,
+        height: 630,
+        alt: "Kevin Prieto - Software Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kevin Prieto - Software Engineer",
+    description: "Software engineer focused on backend systems, web applications, and automation.",
+    creator: "@bykevin12",
+    images: ["/og-image.png"],
+  },
+  icons: {
+    icon: "/favicon.png",
+    apple: "/apple-touch-icon.png",
+  },
+  metadataBase: new URL("https://kevprieto.com"),
 };
 
 export default function RootLayout({
