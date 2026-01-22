@@ -24,7 +24,7 @@ export function HighlightsSection() {
               whileHover={
                 shouldReduceMotion
                   ? {}
-                  : { scale: 1.02, transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] } }
+                  : { scale: 1.05, y: -4, boxShadow: "0 32px 80px rgba(0, 0, 0, 0.2)", transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
               }
             >
               <div>
@@ -60,9 +60,11 @@ export function HighlightsSection() {
                 shouldReduceMotion
                   ? {}
                   : {
-                      scale: 1.02,
-                      borderColor: "rgba(124, 58, 237, 0.3)",
-                      transition: { duration: 0.3, ease: [0.25, 0.1, 0.25, 1] },
+                      scale: 1.05,
+                      y: -4,
+                      borderColor: "rgba(255, 255, 255, 0.15)",
+                      boxShadow: "0 28px 70px rgba(0, 0, 0, 0.18)",
+                      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
                     }
               }
             >

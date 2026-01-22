@@ -24,14 +24,14 @@ export function AwardsSection() {
               shouldReduceMotion
                 ? {}
                 : {
-                    y: -4,
-                    boxShadow: "0 20px 50px rgba(0, 0, 0, 0.15)",
-                    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] },
+                    y: -6,
+                    boxShadow: "0 28px 70px rgba(0, 0, 0, 0.2)",
+                    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
                   }
             }
           >
-            {/* Light sweep effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.03] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out pointer-events-none" />
+            {/* Light sweep effect - MORE VISIBLE */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.12] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-800 ease-out pointer-events-none" />
 
             <div className="flex flex-col lg:flex-row gap-[var(--space-lg)] items-start">
               {/* Certificate Image */}
@@ -40,7 +40,7 @@ export function AwardsSection() {
                   src="/content/certificate/cert.jpg"
                   alt="Innovation Award Certificate"
                   fill
-                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
                   sizes="(max-width: 1024px) 100vw, 480px"
                   quality={90}
                 />
@@ -73,7 +73,7 @@ export function AwardsSection() {
                   whileHover={
                     shouldReduceMotion
                       ? {}
-                      : { x: 4, transition: { duration: 0.2 } }
+                      : { x: 6, transition: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] } }
                   }
                 >
                   <svg

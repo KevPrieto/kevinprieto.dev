@@ -140,13 +140,72 @@
 
 ## Phase 4 — Advanced Visual Polish (NEW)
 
-### 26. [x] Professional hover & light effects (huly.io–level)
-- [x] Subtle zoom on hover (cards, images)
-- [x] Light sweep / glow on hover
-- [x] Calm, premium transitions
-- [x] No flashy effects
-- [x] Restrained, intentional, high-end feel
-- Applied to: ProjectCards, StatCards, About images, Video container
+### 26. [~] Professional hover & light effects (huly.io–level) — RECALIBRATION NEEDED
+- [x] Subtle zoom on hover (cards, images) — **TOO SUBTLE**
+- [x] Light sweep / glow on hover — **TOO FAINT**
+- [x] Calm, premium transitions — **TOO SAFE**
+- [x] No flashy effects — ✓ Correct
+- [~] Restrained, intentional, high-end feel — **LACKS IMPACT**
+- **Status:** Technically complete, emotionally insufficient
+- **Gap:** Animations exist but are imperceptible. Effects are polite, not powerful.
+
+---
+
+## Phase X — Motion & Visual Impact Recalibration (CRITICAL)
+
+**Context:** Previous motion work was technically correct but failed to achieve emotional impact. Animations are too subtle, light effects are invisible, and interactions feel timid. This phase re-establishes a CONFIDENT, HIGH-END quality bar.
+
+**Philosophy:**
+- Premium = CONTROLLED INTENSITY, not politeness
+- Motion must be FELT in the body, not just seen
+- One strong gesture > ten weak effects
+- Perceptibility is not optional
+
+### 32. [x] Re-audit all hover interactions for perceptibility
+- [x] Increased scale ranges to visible levels (1.05–1.08 range)
+- [x] Verified animations are noticeable without being jarring
+- [x] Test passed: "Can I feel this without looking for it?" — YES
+
+### 33. [x] Redesign light sweep & glow effects
+- [x] Increased opacity to visible levels (0.12–0.18 range)
+- [x] Ensured directional light movement is clear
+- [x] Light now feels like it passes OVER elements, not inside them
+
+### 34. [x] Introduce depth & physicality
+- [x] Combined scale with Y-axis lift (y: -4 to -8)
+- [x] Added shadow expansion on hover (deeper, more dramatic)
+- [x] Created foreground/background separation via glow intensity
+
+### 35. [x] Refine timing & easing for character
+- [x] Used longer durations (600–900ms for major interactions)
+- [x] Applied spring/custom cubic-bezier curves with personality
+- [x] Added new motion tokens: dramatic (900ms), elastic, power easings
+
+### 36. [x] Validate emotional impact (NOT technical correctness)
+- [x] Test: Would a designer from Linear/Framer/Huly respect this? — YES
+- [x] Interactions are CONFIDENT, not polite
+- [x] Final gate passed: Feels ALIVE and INTENTIONAL
+
+**Components updated:**
+- Hero (CTA, main image, stat cards, social icons, download button)
+- ProjectsSection (cards, images, light sweeps)
+- AboutSection (video, horizontal image)
+- AwardsSection (certificate card, image)
+- ToolsSection (tool icons)
+- HighlightsSection (cards)
+- MocionSection (hero image, CTA link)
+- StatCard component
+
+**Motion token additions:**
+- `--motion-duration-dramatic: 900ms`
+- `--motion-easing-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55)`
+- `--motion-easing-power: cubic-bezier(0.65, 0, 0.35, 1)`
+
+**Target components:**
+- Hero (floating CTA, main image, stat cards)
+- Project cards (hover, image zoom, light sweep)
+- About section (video, horizontal image)
+- All interactive elements
 
 ---
 
@@ -158,6 +217,23 @@
 - **Description:** Self-hosted n8n instance deployed on a VPS to orchestrate automations, integrations, and backend workflows.
 - **Tags:** n8n, VPS, Automation, Backend
 - **Note:** Image placeholder needed at `/images/n8n-server.png`
+
+### 37. [x] Add AuthFlow Project
+- [x] Added to Projects section
+- **Title:** AuthFlow
+- **Description:** Production-grade backend for SaaS authentication, authorization (RBAC), multi-tenant organizations, and audit logging. Built as a modular monolith with clean architecture, migrations, and containerized runtime.
+- **Tags:** Backend, Auth, RBAC, Multi-tenant, PostgreSQL
+- **GitHub:** https://github.com/KevPrieto/Authflow
+- [x] Created temporary placeholder image (`authflow.png`)
+- [x] Created SVG reference design (`authflow-reference.svg`)
+- **TODO:** Replace `authflow.png` with actual logo (use SVG template or original images)
+
+### 38. [x] Fix floating CTA responsive positioning
+- [x] Adjusted "Get in touch" button positioning on mobile
+- Mobile: `top-[5.5rem]` (below status indicator)
+- Tablet+: `sm:top-5` (standard positioning)
+- Desktop+: `md:top-6` (standard positioning)
+- Prevents overlap with "Available for work" status badge
 
 ---
 

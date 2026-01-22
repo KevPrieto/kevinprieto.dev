@@ -158,7 +158,7 @@ function ToolItem({ name, logo, size = "md" }: ToolItemProps) {
   return (
     <motion.div
       className="group flex flex-col items-center gap-3"
-      whileHover={shouldReduceMotion ? {} : { y: -2, transition: { duration: 0.2 } }}
+      whileHover={shouldReduceMotion ? {} : { y: -4, transition: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] } }}
     >
       <motion.div
         className={`${containerSizes[size]} rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] flex items-center justify-center transition-colors duration-200`}
@@ -167,10 +167,11 @@ function ToolItem({ name, logo, size = "md" }: ToolItemProps) {
           shouldReduceMotion
             ? {}
             : {
-                borderColor: "var(--color-border)",
+                borderColor: "rgba(255, 255, 255, 0.15)",
                 backgroundColor: "var(--color-surface)",
-                boxShadow: "var(--shadow-elevated)",
-                transition: { duration: 0.2 },
+                boxShadow: "0 12px 32px rgba(0, 0, 0, 0.15)",
+                scale: 1.05,
+                transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
               }
         }
       >

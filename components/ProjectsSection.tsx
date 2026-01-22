@@ -29,6 +29,16 @@ const eyla: Project = {
 const secondaryProjects: Project[] = [
   {
     id: 2,
+    title: "AuthFlow",
+    description:
+      "Production-grade backend for SaaS authentication, authorization (RBAC), multi-tenant organizations, and audit logging. Built as a modular monolith with clean architecture, migrations, and containerized runtime.",
+    image: "/images/authflow.png",
+    imageType: "icon",
+    tags: ["Backend", "Auth", "RBAC", "Multi-tenant", "PostgreSQL"],
+    githubUrl: "https://github.com/KevPrieto/Authflow",
+  },
+  {
+    id: 3,
     title: "Flight Fare Optimizer",
     description:
       "Java 17 desktop application for flight search, filtering, and price ranking. Includes modular architecture, stream-based business logic, PDF report generation, and unit-tested core services separated from the UI layer.",
@@ -38,7 +48,7 @@ const secondaryProjects: Project[] = [
     githubUrl: "https://github.com/KevPrieto/Flight-Fare-Optimizer",
   },
   {
-    id: 3,
+    id: 4,
     title: "EYLA Mobile",
     description:
       "Mobile extension of EYLA focused on cross-platform delivery. Built with React Native and TypeScript, designed to integrate with the core system while preserving the same principles of clarity, intent, and long-term orientation.",
@@ -48,7 +58,7 @@ const secondaryProjects: Project[] = [
     githubUrl: "https://github.com/KevPrieto/eyla-mobile",
   },
   {
-    id: 4,
+    id: 5,
     title: "n8n Automation Server",
     description:
       "Self-hosted n8n instance deployed on a VPS to orchestrate automations, integrations, and backend workflows. Focused on reliability, security, and extensibility for production-ready automation pipelines.",
@@ -64,22 +74,22 @@ function ProjectCard({ project }: { project: Project }) {
 
   return (
     <motion.article
-      className="group relative bg-[var(--color-surface)] border border-white/[0.08] dark:border-white/[0.06] rounded-xl p-[var(--space-lg)] flex flex-col overflow-hidden transition-all duration-400"
+      className="group relative bg-[var(--color-surface)] border border-white/[0.08] dark:border-white/[0.06] rounded-xl p-[var(--space-lg)] flex flex-col overflow-hidden transition-all duration-500"
       style={{ boxShadow: "var(--shadow-soft)" }}
       whileHover={
         shouldReduceMotion
           ? {}
           : {
-            y: -6,
-            boxShadow: "0 24px 64px rgba(0, 0, 0, 0.2), 0 8px 24px rgba(0, 0, 0, 0.1)",
-            borderColor: "rgba(255, 255, 255, 0.15)",
-            transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+            y: -8,
+            boxShadow: "0 32px 80px rgba(0, 0, 0, 0.25), 0 12px 32px rgba(0, 0, 0, 0.15)",
+            borderColor: "rgba(255, 255, 255, 0.18)",
+            transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
           }
       }
     >
-      {/* Premium light sweep effect on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.03] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out pointer-events-none" />
+      {/* Premium light sweep effect on hover - MORE VISIBLE */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.12] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-600 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.15] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-800 ease-out pointer-events-none" />
       {/* Project visual - subtle zoom on hover */}
       <div
         className={`relative mb-[var(--space-md)] rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-2)] overflow-hidden
@@ -89,7 +99,7 @@ function ProjectCard({ project }: { project: Project }) {
         <img
           src={project.image}
           alt={`${project.title} preview`}
-          className={`transition-transform duration-500 ease-out group-hover:scale-[1.03] ${
+          className={`transition-transform duration-700 ease-out group-hover:scale-[1.06] ${
             isBanner
               ? "w-full h-full object-cover"
               : "w-full h-full object-contain p-4"
