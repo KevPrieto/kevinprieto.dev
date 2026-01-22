@@ -218,6 +218,21 @@
 - **Tags:** n8n, VPS, Automation, Backend
 - **Note:** Image placeholder needed at `/images/n8n-server.png`
 
+### 37. [x] Add AuthFlow Project
+- [x] Added to Projects section
+- **Title:** AuthFlow
+- **Description:** Production-grade backend for SaaS authentication, authorization (RBAC), multi-tenant organizations, and audit logging. Built as a modular monolith with clean architecture, migrations, and containerized runtime.
+- **Tags:** Backend, Auth, RBAC, Multi-tenant, PostgreSQL
+- **GitHub:** https://github.com/KevPrieto/Authflow
+- **Note:** Image placeholder needed at `/images/authflow.png`
+
+### 38. [x] Fix floating CTA responsive positioning
+- [x] Adjusted "Get in touch" button positioning on mobile
+- Mobile: `top-[5.5rem]` (below status indicator)
+- Tablet+: `sm:top-5` (standard positioning)
+- Desktop+: `md:top-6` (standard positioning)
+- Prevents overlap with "Available for work" status badge
+
 ---
 
 ## Phase 6 — Awards & Recognition (NEW)
