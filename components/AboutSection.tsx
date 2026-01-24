@@ -80,7 +80,7 @@ export function AboutSection() {
               className="group relative w-[320px] sm:w-[380px] lg:w-[420px] xl:w-[480px] aspect-[9/16] rounded-3xl overflow-visible mx-auto lg:mx-0"
               initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={shouldReduceMotion ? {} : { y: -6, scale: 1.02, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }}
+              whileHover={shouldReduceMotion ? {} : { y: -10, scale: 1.05, transition: { duration: 0.4, ease: [0.34, 1.56, 0.64, 1] } }}
               transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
               viewport={{ once: true }}
             >
@@ -92,9 +92,9 @@ export function AboutSection() {
                 }}
               />
               {/* Video with border - premium hover */}
-              <div className="relative w-full h-full rounded-3xl overflow-hidden border border-[var(--color-border)]/30 group-hover:border-[var(--color-border)]/60 transition-colors duration-500">
+              <div className="relative w-full h-full rounded-3xl overflow-hidden border border-[var(--color-border)]/30 group-hover:border-[var(--color-border)]/80 transition-colors duration-400">
                 <video
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-600 ease-out group-hover:scale-[1.10]"
                   autoPlay
                   loop
                   muted
@@ -106,35 +106,11 @@ export function AboutSection() {
                 {/* Subtle gradient overlay for depth */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none" />
                 {/* Light sweep on hover - MORE VISIBLE */}
-                <div className="absolute inset-0 bg-gradient-to-b from-white/[0.12] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-600 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-b from-white/[0.20] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               </div>
             </motion.div>
           </Reveal>
         </div>
-
-        {/* Row 2: Horizontal Image - Full width, cinematic, premium hover */}
-        <Reveal delay={0.3}>
-          <motion.div
-            className="group relative w-full aspect-[21/9] rounded-2xl overflow-hidden cursor-default"
-            initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            whileHover={shouldReduceMotion ? {} : { scale: 1.015, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }}
-            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            viewport={{ once: true }}
-          >
-            <Image
-              src="/content/about-pic/DSC03127-2.png"
-              alt="Kevin Prieto workspace"
-              fill
-              className="object-cover transition-transform duration-800 ease-out group-hover:scale-[1.05]"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1100px"
-              quality={90}
-              priority={false}
-            />
-            {/* Light sweep on hover - MORE VISIBLE */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.12] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1200 ease-out pointer-events-none" />
-          </motion.div>
-        </Reveal>
       </div>
     </Section>
   );

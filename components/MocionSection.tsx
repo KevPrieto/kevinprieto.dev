@@ -18,19 +18,19 @@ export function MocionSection() {
             className="group relative w-full mb-[clamp(3rem,8vh,5rem)] overflow-hidden rounded-[1.5rem]"
             initial={shouldReduceMotion ? {} : { opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            whileHover={shouldReduceMotion ? {} : { scale: 1.02, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }}
+            whileHover={shouldReduceMotion ? {} : { scale: 1.04, y: -8, transition: { duration: 0.4, ease: [0.34, 1.56, 0.64, 1] } }}
             transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
             viewport={{ once: true }}
             style={{ boxShadow: "var(--shadow-elevated)" }}
           >
-            <div className="relative aspect-[21/9] w-full">
+            <div className="relative aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9] w-full">
               <Image
                 src="/content/mocion-pic/mocion.png"
                 alt="Moción game"
                 fill
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                className="object-cover transition-transform duration-600 ease-out group-hover:scale-[1.12]"
                 priority
-                sizes="(max-width: 768px) 100vw, 65rem"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 65rem"
               />
             </div>
           </motion.div>
@@ -126,7 +126,7 @@ export function MocionSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.5, ease: [0.25, 0.1, 0.25, 1] }}
             viewport={{ once: true }}
-            whileHover={shouldReduceMotion ? {} : { x: 6, transition: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] } }}
+            whileHover={shouldReduceMotion ? {} : { x: 12, scale: 1.05, transition: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] } }}
           >
             <span>Explore Moción</span>
             <svg

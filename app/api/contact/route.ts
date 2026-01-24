@@ -28,6 +28,15 @@ function isRateLimited(ip: string): boolean {
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if API key is configured
+    if (!RESEND_API_KEY) {
+      console.error('RESEND_API_KEY is not configured');
+      return NextResponse.json(
+        { error: 'Contact form is not properly configured. Please try again later or reach out via social media.' },
+        { status: 503 }
+      );
+    }
+
     // Rate limiting
     const ip = request.headers.get('x-forwarded-for') || 'unknown';
     if (isRateLimited(ip)) {

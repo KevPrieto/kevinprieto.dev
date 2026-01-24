@@ -9,9 +9,9 @@ interface SectionProps {
 
 export function Section({ id, title, subtitle, children }: SectionProps) {
   return (
-    <section id={id} className="py-[var(--space-3xl)] relative">
+    <section id={id} className="py-[clamp(3rem,8vw,5rem)] relative">
       <Container>
-        <div className="mb-[var(--space-xl)] text-center">
+        <div className="mb-[var(--space-lg)] text-center">
           <h2 className="text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold mb-[var(--space-sm)] tracking-tighter text-[var(--color-fg)]">
             {title}
           </h2>

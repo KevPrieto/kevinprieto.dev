@@ -142,9 +142,9 @@ interface ToolItemProps {
 function ToolItem({ name, logo, size = "md" }: ToolItemProps) {
   const { shouldReduceMotion } = useMotion();
   const containerSizes = {
-    lg: "w-16 h-16",
-    md: "w-12 h-12",
-    sm: "w-10 h-10",
+    lg: "w-14 h-14 sm:w-15 sm:h-15 md:w-16 md:h-16",
+    md: "w-11 h-11 sm:w-12 sm:h-12",
+    sm: "w-9 h-9 sm:w-10 sm:h-10",
   };
 
   const iconSizes = {
@@ -153,12 +153,18 @@ function ToolItem({ name, logo, size = "md" }: ToolItemProps) {
     sm: 22,
   };
 
+  const responsiveSizes = {
+    lg: "(max-width: 640px) 48px, (max-width: 768px) 56px, 64px",
+    md: "(max-width: 640px) 44px, 48px",
+    sm: "(max-width: 640px) 36px, 40px",
+  };
+
   const logoSrc = logos[logo];
 
   return (
     <motion.div
       className="group flex flex-col items-center gap-3"
-      whileHover={shouldReduceMotion ? {} : { y: -4, transition: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] } }}
+      whileHover={shouldReduceMotion ? {} : { y: -8, transition: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] } }}
     >
       <motion.div
         className={`${containerSizes[size]} rounded-xl bg-[var(--color-surface-2)] border border-[var(--color-border)] flex items-center justify-center transition-colors duration-200`}
@@ -167,11 +173,11 @@ function ToolItem({ name, logo, size = "md" }: ToolItemProps) {
           shouldReduceMotion
             ? {}
             : {
-                borderColor: "rgba(255, 255, 255, 0.15)",
+                borderColor: "rgba(255, 255, 255, 0.25)",
                 backgroundColor: "var(--color-surface)",
-                boxShadow: "0 12px 32px rgba(0, 0, 0, 0.15)",
-                scale: 1.05,
-                transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
+                boxShadow: "0 20px 48px rgba(0, 0, 0, 0.25)",
+                scale: 1.12,
+                transition: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] },
               }
         }
       >
@@ -182,6 +188,7 @@ function ToolItem({ name, logo, size = "md" }: ToolItemProps) {
             width={iconSizes[size]}
             height={iconSizes[size]}
             className="object-contain"
+            sizes={responsiveSizes[size]}
           />
         )}
       </motion.div>

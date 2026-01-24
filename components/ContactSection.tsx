@@ -52,7 +52,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-[var(--space-3xl)] relative">
+    <section id="contact" className="py-[clamp(3rem,8vw,5rem)] relative">
       <Container>
         <div className="max-w-[42rem] mx-auto text-center">
           <Reveal delay={0.1}>
@@ -164,8 +164,8 @@ export function ContactSection() {
                   type="submit"
                   disabled={status === 'loading'}
                   className="w-full bg-[var(--color-fg)] text-[var(--color-bg)] font-medium py-3 px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[var(--color-accent)] transition-colors duration-200"
-                  whileHover={shouldReduceMotion ? {} : { scale: 1.01 }}
-                  whileTap={shouldReduceMotion ? {} : { scale: 0.99 }}
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.03, y: -2, transition: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] } }}
+                  whileTap={shouldReduceMotion ? {} : { scale: 0.97 }}
                 >
                   {status === 'loading' ? (
                     <span className="flex items-center justify-center gap-2">
