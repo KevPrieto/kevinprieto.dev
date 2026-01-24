@@ -11,7 +11,7 @@ export function FloatingCTA() {
       href="https://calendly.com/kgps1003/30min"
       target="_blank"
       rel="noopener noreferrer"
-      className="glass fixed top-20 right-6 md:top-24 md:right-10 z-40 group relative px-8 py-4 rounded-full text-[var(--color-fg)] font-semibold text-[var(--font-size-base)] inline-flex items-center gap-3 overflow-hidden transition-all duration-300"
+      className="glass fixed bottom-6 right-6 md:top-24 md:bottom-auto md:right-10 z-40 group relative px-8 py-4 rounded-full text-[var(--color-fg)] font-semibold text-[var(--font-size-base)] inline-flex items-center gap-3 overflow-hidden transition-all duration-300"
       style={{
         boxShadow: "0 8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
       }}
@@ -22,17 +22,17 @@ export function FloatingCTA() {
         shouldReduceMotion
           ? {}
           : {
-              y: -6,
-              scale: 1.05,
-              boxShadow: "0 16px 48px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.3)",
-              transition: { duration: 0.3 },
+              y: -10,
+              scale: 1.10,
+              boxShadow: "0 24px 64px rgba(0, 0, 0, 0.35), inset 0 2px 0 rgba(255, 255, 255, 0.4)",
+              transition: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] },
             }
       }
-      whileTap={shouldReduceMotion ? {} : { scale: 0.97 }}
+      whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
       aria-label="Get in touch via Calendly"
     >
       {/* iOS-style shine effect */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/35 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-600 ease-in-out pointer-events-none" />
 
       {/* Inner glow highlight */}
       <div className="absolute inset-0 rounded-full bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />

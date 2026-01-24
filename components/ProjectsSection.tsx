@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Section } from "./Section";
 import { Reveal, StaggerContainer, StaggerItem, WordReveal } from "./motion";
@@ -80,30 +81,34 @@ function ProjectCard({ project }: { project: Project }) {
         shouldReduceMotion
           ? {}
           : {
-            y: -8,
-            boxShadow: "0 32px 80px rgba(0, 0, 0, 0.25), 0 12px 32px rgba(0, 0, 0, 0.15)",
-            borderColor: "rgba(255, 255, 255, 0.18)",
-            transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+            y: -12,
+            scale: 1.03,
+            boxShadow: "0 40px 100px rgba(0, 0, 0, 0.35), 0 16px 40px rgba(0, 0, 0, 0.25)",
+            borderColor: "rgba(255, 255, 255, 0.25)",
+            transition: { duration: 0.4, ease: [0.34, 1.56, 0.64, 1] },
           }
       }
     >
       {/* Premium light sweep effect on hover - MORE VISIBLE */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.12] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-600 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.15] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-800 ease-out pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.18] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.22] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out pointer-events-none" />
       {/* Project visual - subtle zoom on hover */}
       <div
         className={`relative mb-[var(--space-md)] rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-2)] overflow-hidden
-          ${isBanner ? "aspect-video" : "aspect-square flex items-center justify-center"}
+          ${isBanner ? "aspect-video" : "aspect-square"}
         `}
       >
-        <img
+        <Image
           src={project.image}
           alt={`${project.title} preview`}
-          className={`transition-transform duration-700 ease-out group-hover:scale-[1.06] ${
+          fill
+          className={`transition-transform duration-600 ease-out group-hover:scale-[1.12] ${
             isBanner
-              ? "w-full h-full object-cover"
-              : "w-full h-full object-contain p-4"
+              ? "object-cover"
+              : "object-contain p-4"
           }`}
+          sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 768px) calc(50vw - 2rem), 400px"
+          quality={90}
         />
       </div>
 
