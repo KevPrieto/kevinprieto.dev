@@ -84,12 +84,12 @@ export function Hero() {
           />
         </div>
         <Container>
-          {/* Floating CTA - Fixed, Top Right Corner, Premium Crystal Bubble */}
+          {/* Floating CTA - Fixed, Bottom-Right on Mobile, Top-Right on Desktop */}
           <motion.a
             href="https://calendly.com/kgps1003/30min"
             target="_blank"
             rel="noopener noreferrer"
-            className="glass fixed top-[5.5rem] right-4 sm:top-5 sm:right-6 md:top-6 md:right-8 z-50 group px-6 py-3 sm:px-8 sm:py-4 rounded-full text-[var(--color-fg)] font-semibold text-[0.875rem] sm:text-[var(--font-size-base)] inline-flex items-center gap-2 sm:gap-3 overflow-hidden transition-all duration-300"
+            className="glass fixed bottom-6 right-6 sm:top-5 sm:bottom-auto sm:right-6 md:top-6 md:right-8 z-50 group px-6 py-3 sm:px-8 sm:py-4 rounded-full text-[var(--color-fg)] font-semibold text-[0.875rem] sm:text-[var(--font-size-base)] inline-flex items-center gap-2 sm:gap-3 overflow-hidden transition-all duration-300"
             style={{
               boxShadow: "0 8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
             }}

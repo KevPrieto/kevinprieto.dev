@@ -371,6 +371,14 @@
 - **Action:** Update description to align with this narrative, adapted to website tone
 - **Completed:** Description updated with Cheetos Hackathon context, LinkedIn URL updated
 
+### 47. [x] Fix "Get in touch" button FINAL positioning on mobile (Hero)
+- **Problem:** Button is still in top-right position on mobile instead of bottom-right (per screenshot feedback)
+- **Current:** Button uses `top-[5.5rem] right-4` on mobile in Hero.tsx
+- **Required:** Button must be at `bottom-6 right-6` on mobile (fixed to bottom-right corner)
+- **Note:** User provided screenshots showing current wrong position and desired position (bottom-right circle)
+- **Action:** Update Hero.tsx floating CTA button positioning classes for mobile
+- **Completed:** Updated Hero.tsx line 92 to use `bottom-6 right-6` on mobile, `sm:top-5 sm:bottom-auto` on tablet+, button now correctly positioned at bottom-right corner on mobile screens
+
 ---
 
 ## Git & Large-Asset Safety Checklist
