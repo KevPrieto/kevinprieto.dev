@@ -33,7 +33,7 @@ const secondaryProjects: Project[] = [
     title: "AuthFlow",
     description:
       "Production-grade backend for SaaS authentication, authorization (RBAC), multi-tenant organizations, and audit logging. Built as a modular monolith with clean architecture, migrations, and containerized runtime.",
-    image: "/images/authflow.png",
+    image: "/content/authflow-pic/authflow.png",
     imageType: "icon",
     tags: ["Backend", "Auth", "RBAC", "Multi-tenant", "PostgreSQL"],
     githubUrl: "https://github.com/KevPrieto/Authflow",
@@ -73,9 +73,21 @@ function ProjectCard({ project }: { project: Project }) {
   const isBanner = project.imageType === "banner";
   const { shouldReduceMotion } = useMotion();
 
+  const CardWrapper = project.githubUrl ? motion.a : motion.article;
+  const cardProps = project.githubUrl
+    ? {
+        href: project.githubUrl,
+        target: "_blank",
+        rel: "noopener noreferrer",
+        className: "group relative bg-[var(--color-surface)] border border-white/[0.08] dark:border-white/[0.06] rounded-xl p-[var(--space-lg)] flex flex-col overflow-hidden transition-all duration-500 cursor-pointer",
+      }
+    : {
+        className: "group relative bg-[var(--color-surface)] border border-white/[0.08] dark:border-white/[0.06] rounded-xl p-[var(--space-lg)] flex flex-col overflow-hidden transition-all duration-500",
+      };
+
   return (
-    <motion.article
-      className="group relative bg-[var(--color-surface)] border border-white/[0.08] dark:border-white/[0.06] rounded-xl p-[var(--space-lg)] flex flex-col overflow-hidden transition-all duration-500"
+    <CardWrapper
+      {...cardProps}
       style={{ boxShadow: "var(--shadow-soft)" }}
       whileHover={
         shouldReduceMotion
@@ -83,15 +95,25 @@ function ProjectCard({ project }: { project: Project }) {
           : {
             y: -12,
             scale: 1.03,
-            boxShadow: "0 40px 100px rgba(0, 0, 0, 0.35), 0 16px 40px rgba(0, 0, 0, 0.25)",
-            borderColor: "rgba(255, 255, 255, 0.25)",
+            boxShadow: "0 40px 100px rgba(0, 0, 0, 0.35), 0 16px 40px rgba(0, 0, 0, 0.25), 0 0 60px rgba(255, 255, 255, 0.15)",
+            borderColor: "rgba(255, 255, 255, 0.35)",
             transition: { duration: 0.4, ease: [0.34, 1.56, 0.64, 1] },
           }
       }
     >
+      {/* Magical illuminated border glow on hover */}
+      <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        style={{
+          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%)',
+          padding: '1px',
+          WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+          WebkitMaskComposite: 'xor',
+          maskComposite: 'exclude',
+        }}
+      />
       {/* Premium light sweep effect on hover - MORE VISIBLE */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.18] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.22] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.18] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-xl" />
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.22] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-out pointer-events-none rounded-xl" />
       {/* Project visual - subtle zoom on hover */}
       <div
         className={`relative mb-[var(--space-md)] rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-2)] overflow-hidden
@@ -133,19 +155,9 @@ function ProjectCard({ project }: { project: Project }) {
         ))}
       </div>
 
-      {/* GitHub link */}
+      {/* GitHub link indicator */}
       {project.githubUrl && (
-        <motion.a
-          href={project.githubUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-[var(--font-size-sm)] text-[var(--color-muted-light)] hover:text-[var(--color-accent)] transition-colors duration-200"
-          whileHover={
-            shouldReduceMotion
-              ? {}
-              : { x: 4, transition: { duration: 0.2, ease: [0.25, 0.1, 0.25, 1] } }
-          }
-        >
+        <div className="inline-flex items-center gap-2 text-[var(--font-size-sm)] text-[var(--color-muted-light)] group-hover:text-[var(--color-accent)] transition-colors duration-200">
           <svg
             className="w-5 h-5"
             fill="currentColor"
@@ -156,7 +168,7 @@ function ProjectCard({ project }: { project: Project }) {
           </svg>
           <span>View Repository</span>
           <svg
-            className="w-4 h-4"
+            className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -164,9 +176,9 @@ function ProjectCard({ project }: { project: Project }) {
           >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
           </svg>
-        </motion.a>
+        </div>
       )}
-    </motion.article>
+    </CardWrapper>
   );
 }
 
