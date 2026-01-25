@@ -19,9 +19,15 @@ const socialLinks = [
 
 const greetings = [
   "Welcome, I'm Kevin",
-  "Hello, I'm Kevin",
-  "Hey there, I'm Kevin",
-  "Nice to meet you, I'm Kevin",
+  "Hola, soy Kevin",
+  "Ciao, sono Kevin",
+  "Olá, sou Kevin",
+  "Bonjour, je suis Kevin",
+  "안녕하세요, 저는 Kevin입니다",
+  "ようこそ、ケビンです",
+  "你好，我是 Kevin",
+  "Hallo, ich bin Kevin",
+  "नमस्ते, मैं केविन हूँ",
 ];
 
 export function Hero() {
@@ -167,7 +173,7 @@ export function Hero() {
               {/* Text Column */}
               <div className="flex-1 order-2 lg:order-1 flex flex-col justify-center">
                 <Reveal delay={0.1}>
-                  <h1 className="text-[clamp(3.5rem,10vw,6.5rem)] font-extrabold leading-[1.15] tracking-[var(--letter-spacing-tight)] mb-[var(--space-lg)] overflow-visible">
+                  <h1 className="text-[clamp(2.5rem,6vw,4.5rem)] font-extrabold leading-[1.15] tracking-[var(--letter-spacing-tight)] mb-[var(--space-lg)] overflow-visible bg-clip-text text-transparent bg-gradient-to-b from-[var(--color-fg)] to-[var(--color-muted)] drop-shadow-sm pb-2">
                     <WordReveal delay={0} stagger={0.08}>
                       I build systems.
                     </WordReveal>
