@@ -515,20 +515,40 @@
 - [x] Maintained large image size (no reduction)
 - [x] Visual hierarchy balanced (Text ≈ Image weight)
 
-### 63. [ ] Hero: Complete Layout Restructure
-**New Request:** Move components into specific columns/rows; Bio below Image
-- [ ] **Col 1:** Stat Cards (Project, Years, Curiosity) -> Make bigger/prominent
-- [ ] **Col 2/Main:** Headline
-- [ ] **Col 3/Right:** Profile Picture -> Mini Bio (Text) immediately below it
-- [ ] **Rows:** Social Media icons in their own dedicated row
-- [ ] **Rows:** Download CV in its own dedicated row
-- [ ] Apply "horizontal" flow where appropriate
+### 63. [x] Hero: Complete Layout Restructure (Superseded)
+**Status:** Superseded by Task 65 (New Design Brief)
+- [x] Initial 3-column attempt completed
+- [x] Superseded by definitive "Editorial Grid" requirement
 
-### 64. [ ] Hero: Interactive Headlines
-**New Request:** "Letters... has to have a hover effect"
-- [ ] Implement individual letter hover animations for the main headline
-- [ ] Effect: Scale/Color shift/Glow on hover per character
+### 64. [x] Hero: Interactive Headlines (Superseded/Revised)
+**Status:** Interactive letters implemented, but "effect is horrible".
+- [x] HoverLetter component created
+- [x] Effect rejected ("horrible, not elegant") -> Will remove/refine in Task 65
 
+### 65. [x] Hero: Corrective Redesign & Grid
+**Status:** Superseded by Task 66 (User requested Single Column Desktop)
+- [x] **Grid:** 12-col Grid (Superseded)
+- [x] **Image:** Desktop Image Fixed (Flex container, simplified motion)
+- [x] **Headline:** `WordReveal` animation implemented (no clipping)
+- [x] **Social/CV:** Unified centered/left layout, Big Icons (w-14 h-14)
+- [x] **Mobile:** Correct stack order verified in code
+- [x] **Typography:** Solid color, no flashy effects
+
+### 66. [x] Hero: Unified Centered Layout
+**Status:** Superseded by Task 67 ("Letters Left, Picture Right", Stats Centered)
+- [x] **Structure:** Single Column Stack (Completed)
+- [x] **Alignment:** Center everything (Completed)
+
+### 67. [x] Hero: Hybrid Layout (Split Top / Centered Bottom)
+**Completed:** "Letters Left, Picture Right" for main block, "Rest not touched" for footer.
+- [x] **Greeting:** Carousel Centered (Moved out of split grid).
+- [x] **Top Section (Split):** Grid 2-cols (Desktop).
+  - **Left:** Headline + Paragraph (Text Left).
+  - **Right:** Image (Text Right / End).
+- [x] **Bottom Section (Centered):**
+  - **Stats:** Centered Row.
+  - **Social/CV:** Centered Row.
+- [x] **Mobile:** Unified Stack (Unchanged).
 
 ---
 
