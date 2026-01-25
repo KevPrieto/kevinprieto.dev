@@ -373,6 +373,75 @@
 
 ---
 
+## Phase 9 — $50,000 Website Strategy & Process
+
+### 47. [ ] Define $50,000 Website Quality Benchmark
+- Establish enterprise-level criteria (strategy, narrative, conversion, trust)
+- Identify gaps between current site and $50k standards
+- Reference Flow Ninja enterprise methodology
+
+---
+
+## Phase 10 — Motion System Reverse Engineering
+
+### 48. [ ] Reverse-engineer Flow Ninja animations
+- Analyze hover, scroll, entrance, and transition behaviors
+- Identify easing, timing, scale, depth, and lighting patterns
+- Rebuild equivalents using Framer Motion
+
+---
+
+## Phase 11 — Performance & Lag Elimination (CRITICAL)
+
+### 49. [ ] Performance optimization & lag elimination
+- Run Lighthouse (LCP, CLS, INP, TTI)
+- Identify animation jank and layout thrashing
+- Optimize images, videos, motion layers, and JS cost
+- Goal: instant, fluid feel
+
+---
+
+## Phase 12 — Video System Verification
+
+### 50. [ ] Verify desktop video replacement & framing
+- Confirm new VIDEO-DESKTOP.mp4 is loaded
+- Validate object-fit, positioning, and responsiveness
+- Path: /public/content/desktop-video/
+
+---
+
+## Phase 13 — About Section Structural Fix
+
+### 51. [ ] Fix About section layout & density
+- Remove white gap under description
+- Reduce text density
+- Improve animation hierarchy
+- Goal: editorial, cinematic layout
+
+---
+
+## Phase 14 — Hero Image & Profile Picture Audit
+
+### 52. [ ] Fix profile picture scaling & aesthetics
+- Image file: image00100.jpeg
+- Correct aspect ratio and framing
+- Ensure premium, elegant hero composition
+
+---
+
+## Phase 15 — Projects Section Visual & Interaction Upgrade
+
+### 53. [ ] Replace AuthFlow project image
+- New image: /public/content/authflow-pic/authflow.png
+
+### 54. [ ] Add magical illuminated borders on project hover
+- Visible, premium glow aligned with site aesthetic
+
+### 55. [ ] Ensure project cards link to GitHub repositories
+- Clicking projects navigates to their existing repo URLs
+
+---
+
 ## Git & Large-Asset Safety Checklist
 
 Before ANY push:
