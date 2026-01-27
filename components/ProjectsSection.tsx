@@ -23,7 +23,7 @@ const vera: Project = {
   title: "VÉRA",
   description:
     "Full-stack ecommerce platform for premium DTC brands. Handles the complete purchase lifecycle—from product discovery to secure checkout and order fulfillment—with infrastructure built to scale. Payments flow through Stripe webhooks that never lose a transaction, authentication uses row-level security, and the storefront regenerates dynamically without downtime.",
-  image: "/images/vera-banner.png",
+  image: "/images/vera-logo.png",
   imageType: "banner",
   tags: ["Full-Stack", "Ecommerce", "Next.js", "Stripe", "Supabase"],
   externalUrl: "https://ecommerce.kevprieto.com",
@@ -56,7 +56,7 @@ const secondaryProjects: Project[] = [
     title: "Flight Fare Optimizer",
     description:
       "Java 17 desktop application for flight search, filtering, and price ranking. Includes modular architecture, stream-based business logic, PDF report generation, and unit-tested core services separated from the UI layer.",
-    image: "/images/FlightFare.png",
+    image: "/images/flight-fare-logo.png",
     imageType: "icon",
     tags: ["Java 17", "JavaFX", "JUnit", "Desktop"],
     githubUrl: "https://github.com/KevPrieto/Flight-Fare-Optimizer",
