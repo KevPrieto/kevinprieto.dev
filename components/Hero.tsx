@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Container } from "./Container";
 import { StatCard } from "./StatCard";
-import { Reveal, WordReveal, StaggerContainer, StaggerItem } from "./motion";
+import { Reveal, StaggerContainer, StaggerItem } from "./motion";
 import { useMotion } from "./motion";
 import { GitHubIcon, LinkedInIcon, XIcon, InstagramIcon, YouTubeIcon } from "./Icons";
 
@@ -30,45 +30,52 @@ const greetings = [
   "नमस्ते, मैं केविन हूँ",
 ];
 
-// Interactive Letter Component -> UPDATED: "GREATER" Effect
-const HoverLetter = ({ children, delay = 0 }: { children: string, delay?: number }) => {
-  const { shouldReduceMotion } = useMotion();
-  if (children === " ") return <span className="inline-block w-[0.25em]">&nbsp;</span>;
+// Editorial easing — controlled, confident, no bounce
+const editorialEase: [number, number, number, number] = [0.25, 0.1, 0.25, 1.0];
+
+// Line reveal component — masked vertical slide with hover lift
+function RevealLine({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   return (
-    <motion.span
-      className="inline-block cursor-default"
-      initial={{ opacity: 0, y: 20 }}
+    <span className="block overflow-hidden">
+      <motion.span
+        className="block cursor-default"
+        initial={{ y: 14, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{
+          duration: 0.75,
+          delay,
+          ease: editorialEase,
+        }}
+        whileHover={{
+          y: -8,
+          scale: 1.02,
+          filter: "drop-shadow(0 12px 32px rgba(255, 255, 255, 0.25))",
+          transition: { duration: 0.25, ease: editorialEase },
+        }}
+        style={{ willChange: "transform, filter" }}
+      >
+        {children}
+      </motion.span>
+    </span>
+  );
+}
+
+// Fade element — for subordinate content
+function FadeIn({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: delay, ease: [0.2, 0.65, 0.3, 0.9] }}
-      whileHover={shouldReduceMotion ? {} : {
-        y: -10, // Increased lift (was -3)
-        scale: 1.25, // Increased scale (was 1.05)
-        color: "#60a5fa", // Bright Blue (Tailwind blue-400) to SHOW
-        textShadow: "0 10px 20px rgba(96, 165, 250, 0.3)", // Glow
-        transition: { type: "spring", stiffness: 300, damping: 15 } // Snappy spring
+      transition={{
+        duration: 0.6,
+        delay,
+        ease: editorialEase,
       }}
     >
       {children}
-    </motion.span>
+    </motion.div>
   );
-};
-
-const AnimatedHeadline = ({ text, baseDelay = 0.1 }: { text: string, baseDelay?: number }) => {
-  const words = text.split(" ");
-  return (
-    <span className="inline-block">
-      {words.map((word, wordIndex) => (
-        <span key={wordIndex} className="inline-block whitespace-nowrap mr-[0.25em]">
-          {word.split("").map((char, charIndex) => (
-            <HoverLetter key={`${wordIndex}-${charIndex}`} delay={baseDelay + (wordIndex * 0.1) + (charIndex * 0.02)}>
-              {char}
-            </HoverLetter>
-          ))}
-        </span>
-      ))}
-    </span>
-  );
-};
+}
 
 export function Hero() {
   const [greetingIndex, setGreetingIndex] = useState(0);
@@ -80,6 +87,13 @@ export function Hero() {
     }, 2800);
     return () => clearInterval(interval);
   }, []);
+
+  // Timing
+  const lineStagger = 0.1;
+  const headlineEnd = 0.3 + lineStagger * 3; // ~0.6s
+  const subheadingDelay = headlineEnd + 0.15;
+  const imageDelay = 0.2;
+  const secondaryDelay = headlineEnd + 0.3;
 
   return (
     <>
@@ -93,29 +107,20 @@ export function Hero() {
       `}</style>
 
       <section className="relative min-h-screen flex flex-col justify-center pt-[8rem] pb-[var(--space-xl)] overflow-hidden">
-        {/* Atmospheric background */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[800px] opacity-20 dark:opacity-40"
-            style={{ background: 'radial-gradient(ellipse at center top, rgba(255, 255, 255, 0.1) 0%, rgba(200, 200, 200, 0.05) 40%, transparent 70%)' }} />
-        </div>
-
         <Container>
-          {/* HYBRID LAYOUT: Badge Centered -> Split Top -> Bottom Stack Centered */}
           <div className="flex flex-col items-center gap-10 lg:gap-14 max-w-7xl mx-auto">
 
-            {/* 1. Availability Badge -> ALWAYS CENTERED */}
-            <div className="w-full flex justify-center">
-              <Reveal direction="down" delay={0}>
-                <div className="glass inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[var(--color-border)]/50">
-                  <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse-ring" />
-                  <span className="text-[0.8125rem] sm:text-[var(--font-size-xs)] font-medium text-[var(--color-fg)]">
-                    Available for work<span className="ellipsis-dot">.</span><span className="ellipsis-dot">.</span><span className="ellipsis-dot">.</span>
-                  </span>
-                </div>
-              </Reveal>
-            </div>
+            {/* Availability Badge */}
+            <FadeIn delay={0}>
+              <div className="glass inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[var(--color-border)]/50">
+                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse-ring" />
+                <span className="text-[0.8125rem] sm:text-[var(--font-size-xs)] font-medium text-[var(--color-fg)]">
+                  Available for work<span className="ellipsis-dot">.</span><span className="ellipsis-dot">.</span><span className="ellipsis-dot">.</span>
+                </span>
+              </div>
+            </FadeIn>
 
-            {/* 2. Greeting Carousel -> MOVED HERE TO BE CENTERED */}
+            {/* Greeting Carousel */}
             <div className="h-8 flex items-center justify-center w-full overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.p
@@ -123,7 +128,7 @@ export function Hero() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.4 }}
+                  transition={{ duration: 0.4, ease: editorialEase }}
                   className="text-[var(--color-muted)] font-medium text-lg lg:text-xl text-center"
                 >
                   {greetings[greetingIndex]}
@@ -131,37 +136,32 @@ export function Hero() {
               </AnimatePresence>
             </div>
 
-            {/* 3. SPLIT SECTION (Letters Left / Picture Right) on Desktop */}
+            {/* Main Content Grid */}
             <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
-              {/* LEFT COLUMN: Letters (Headline + Paragraph) */}
+              {/* Left: Headline */}
               <div className="text-center lg:text-left flex flex-col gap-6 lg:gap-8 order-2 lg:order-1">
-
-                {/* Headline ("LETTERS") */}
-                <h1 className="text-[clamp(3rem,6vw,5.5rem)] font-extrabold leading-[1.1] tracking-[var(--letter-spacing-tight)] text-[var(--color-fg)] overflow-visible">
-                  <AnimatedHeadline text="I build systems." baseDelay={0.1} />
-                  <br />
-                  <AnimatedHeadline text="And I think a lot about" baseDelay={0.4} />
-                  <br className="hidden sm:block" />
-                  <AnimatedHeadline text=" where they're taking us." baseDelay={0.7} />
+                <h1 className="text-[clamp(2.75rem,5.5vw,5rem)] font-extrabold leading-[1.08] tracking-[-0.02em] text-[var(--color-fg)]">
+                  <RevealLine delay={0.3}>I build systems.</RevealLine>
+                  <RevealLine delay={0.3 + lineStagger}>And I think a lot about</RevealLine>
+                  <RevealLine delay={0.3 + lineStagger * 2}>where they're taking us.</RevealLine>
                 </h1>
 
-                {/* Paragraph (Included in "Letters" block for cohesion) */}
-                <div className="max-w-xl mx-auto lg:mx-0">
-                  <Reveal delay={0.6}>
-                    <p className="text-[clamp(1.15rem,1.5vw,1.35rem)] text-[var(--color-muted-light)] leading-[1.6]">
-                      Software engineer focused on backend systems, web applications, and automation. I ship working products.
-                    </p>
-                  </Reveal>
-                </div>
+                {/* Subheading */}
+                <FadeIn delay={subheadingDelay}>
+                  <p className="max-w-xl mx-auto lg:mx-0 text-[clamp(1.1rem,1.4vw,1.3rem)] text-[var(--color-muted-light)] leading-[1.6]">
+                    Software engineer focused on backend systems, web applications, and automation. I ship working products.
+                  </p>
+                </FadeIn>
               </div>
 
-              {/* RIGHT COLUMN: Picture */}
+              {/* Right: Portrait */}
               <div className="flex justify-center lg:justify-end order-1 lg:order-2">
                 <motion.div
                   className="relative w-full max-w-[420px] lg:max-w-[500px] aspect-[4/5] lg:aspect-[3/4] overflow-hidden rounded-[2.5rem] lg:rounded-[3rem] border border-[var(--color-border)]/15 shadow-2xl bg-neutral-800"
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: imageDelay, ease: editorialEase }}
                 >
                   <Image
                     src="/content/profile-pic/image00100.jpeg"
@@ -178,59 +178,55 @@ export function Hero() {
               </div>
             </div>
 
-            {/* 4. CENTERED BOTTOM STACK ("Rest not touched") */}
-            <div className="flex flex-col items-center gap-10 w-full pt-4">
+            {/* Bottom: Stats & Social */}
+            <FadeIn delay={secondaryDelay}>
+              <div className="flex flex-col items-center gap-10 w-full pt-4">
 
-              {/* Stats -> CENTERED - UPDATED: 2 CARDS ONLY */}
-              <div className="w-full flex justify-center">
-                <StaggerContainer staggerDelay={0.1} className="flex flex-wrap gap-4 sm:gap-6 justify-center">
-                  <StaggerItem>
-                    <StatCard value="+3" label="Years Coding Everyday" variant="primary" />
-                  </StaggerItem>
-                  <StaggerItem>
-                    <StatCard value="∞" label="Curiosity" variant="secondary" />
-                  </StaggerItem>
-                </StaggerContainer>
-              </div>
+                {/* Stats */}
+                <div className="w-full flex justify-center">
+                  <StaggerContainer staggerDelay={0.1} className="flex flex-wrap gap-4 sm:gap-6 justify-center">
+                    <StaggerItem>
+                      <StatCard value="+3" label="Years Coding Everyday" variant="primary" />
+                    </StaggerItem>
+                    <StaggerItem>
+                      <StatCard value="∞" label="Curiosity" variant="secondary" />
+                    </StaggerItem>
+                  </StaggerContainer>
+                </div>
 
-              {/* Social/CV -> CENTERED */}
-              <Reveal delay={0.8}>
+                {/* Social Links */}
                 <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 justify-center">
                   <div className="flex items-center gap-4">
                     {socialLinks.map((link) => {
                       const Icon = link.icon;
                       return (
-                        <motion.a
+                        <a
                           key={link.label}
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-center w-14 h-14 rounded-full bg-[var(--color-surface-2)] text-[var(--color-muted-light)] hover:text-[var(--color-fg)] hover:bg-[var(--color-surface)] border border-transparent hover:border-[var(--color-border)] transition-all duration-300 shadow-sm"
-                          whileHover={shouldReduceMotion ? {} : { y: -4, scale: 1.1 }}
-                          whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
+                          className="flex items-center justify-center w-14 h-14 rounded-full bg-[var(--color-surface-2)] text-[var(--color-muted-light)] hover:text-[var(--color-fg)] hover:bg-[var(--color-surface)] border border-transparent hover:border-[var(--color-border)] transition-colors duration-300 shadow-sm"
                         >
                           <Icon size={26} />
-                        </motion.a>
+                        </a>
                       );
                     })}
                   </div>
-                  <div className="hidden sm:block w-px h-10 bg-[var(--color-border)]/50"></div>
-                  <motion.a
+                  <div className="hidden sm:block w-px h-10 bg-[var(--color-border)]/50" />
+                  <a
                     href="/cv/CV-Kevin-Jan2026.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-3 h-14 px-8 rounded-full border border-[var(--color-border)] text-[var(--color-muted-light)] hover:text-[var(--color-fg)] hover:border-[var(--color-fg)] transition-all duration-300 font-medium text-base group bg-[var(--color-surface)]/50 backdrop-blur-sm"
-                    whileHover={shouldReduceMotion ? {} : { y: -4, boxShadow: "0 10px 20px -10px rgba(0,0,0,0.1)" }}
-                    whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
+                    className="inline-flex items-center justify-center gap-3 h-14 px-8 rounded-full border border-[var(--color-border)] text-[var(--color-muted-light)] hover:text-[var(--color-fg)] hover:border-[var(--color-fg)] transition-colors duration-300 font-medium text-base bg-[var(--color-surface)]/50 backdrop-blur-sm"
                   >
                     <span>Download CV</span>
-                    <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                     </svg>
-                  </motion.a>
+                  </a>
                 </div>
-              </Reveal>
-            </div>
+              </div>
+            </FadeIn>
 
           </div>
         </Container>
